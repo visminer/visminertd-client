@@ -1,0 +1,50 @@
+<aside class="main-sidebar">
+  <!-- sidebar: style can be found in sidebar.less -->
+  <section class="sidebar">
+    <!-- Sidebar Menu -->
+    <ul class="sidebar-menu">
+      <li class="header">Menu</li>
+      <!-- Optionally, you can add icons to the links -->
+      <li><a routerLink="/"><i class="glyphicon glyphicon-home"></i> <span>Home</span></a></li>
+      <li class="treeview">
+        <a href="#"><i class="glyphicon glyphicon-dashboard"></i> <span>Dashboard</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+        <ul class="treeview-menu">
+          <li><a routerLink="/tdanalyzer" routerLinkActive="active">TD Analyzer</a></li>
+        </ul>
+      </li>
+      <li class="treeview">
+        <a href="#">
+          <i class="fa fa-database"></i> <span>Repositories</span>
+          <small class="label pull-right bg-green">{{(repositories$ | async)?.length}}</small>
+        </a>
+        <ul class="treeview-menu">
+          <li *ngFor="let repository of repositories$ | async">
+            <a href="javascript:void(0)" (click)="setRepository(repository)">
+              {{repository.name}}
+            </a>
+          </li>
+        </ul>
+      </li>
+      <li class="treeview">
+        <a href="#">
+          <i class="glyphicon glyphicon-tags"></i> <span>Versions</span>
+          <small class="label pull-right bg-green">{{(references$ | async)?.length}}</small>
+        </a>
+        <ul class="treeview-menu">
+          <li *ngFor="let reference of references$ | async">
+            <label class="control-sidebar-subheading filter-version-sub-item">
+              <input type="checkbox" (change)="addReference(reference)">
+              <span class="gray-medium">{{reference.name}}</span>
+            </label>
+          </li>
+        </ul>
+      </li>
+    </ul>
+    <!-- /.sidebar-menu -->
+  </section>
+  <!-- /.sidebar -->
+</aside>

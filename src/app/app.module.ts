@@ -1,25 +1,36 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
+import { VisminerService } from './shared/services/visminer.service';
+import { SidebarService } from './shared/components/sidebar/sidebar.service';
+
 import { AppComponent } from './app.component';
-import { FooterComponent } from './shared/components/footer/footer.component';
 import { HeaderComponent } from './shared/components/header/header.component';
-import { MenuLeftSideComponent } from './shared/components/menu-left-side/menu-left-side.component';
-import { RepositoryService } from './shared/services/repository.service';
+import { SidebarComponent } from './shared/components/sidebar/sidebar.component';
+import { TDAnalyzerModule } from './tdanalyzer/tdanalyzer.module';
+import { HomeModule } from './home/home.module';
+import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    FooterComponent,
     HeaderComponent,
-    MenuLeftSideComponent,
+    SidebarComponent,
   ],
   imports: [
     BrowserModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule,
+    AppRoutingModule,
+    HomeModule,
+    TDAnalyzerModule
   ],
-  providers: [RepositoryService],
+  providers: [
+    VisminerService,
+    SidebarService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
