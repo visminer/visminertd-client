@@ -4,10 +4,12 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { HomeComponent } from './home/home.component';
 import { TDAnalyzerComponent } from './tdanalyzer/tdanalyzer.component';
+import { TDEvolutionComponent } from './tdevolution/tdevolution.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
-  { path: 'tdanalyzer', component: TDAnalyzerComponent }
+  { path: 'tdanalyzer', component: TDAnalyzerComponent },
+  { path: 'tdevolution', component: TDEvolutionComponent }  
 ];
 
 @NgModule({

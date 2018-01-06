@@ -10,6 +10,7 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './shared/components/header/header.component';
 import { SidebarComponent } from './shared/components/sidebar/sidebar.component';
 import { TDAnalyzerModule } from './tdanalyzer/tdanalyzer.module';
+import { TDEvolutionModule } from './tdevolution/tdevolution.module';
 import { HomeModule } from './home/home.module';
 import { AppRoutingModule } from './app-routing.module';
 
@@ -25,7 +26,8 @@ import { AppRoutingModule } from './app-routing.module';
     FormsModule,
     AppRoutingModule,
     HomeModule,
-    TDAnalyzerModule
+    TDAnalyzerModule,
+    TDEvolutionModule
   ],
   providers: [
     VisminerService,
