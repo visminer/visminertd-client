@@ -4,9 +4,13 @@
         <i class="fa fa-database"></i>
         {{ repository.name }}
       </h1>
+      <ol class="breadcrumb">
+        <li class="active"><i class="fa fa-line-chart"></i> TD Evolution</li>
+      </ol>
     </section>
         
     <section class="content">
+      <nouislider [config]="sliderConfig" [(ngModel)]="sliderRange" style="padding: 0 10px 40px 10px;"></nouislider>
       <tdevolution-boxes></tdevolution-boxes>
       <p>TD Evolution Works!!!</p>
     </section>
