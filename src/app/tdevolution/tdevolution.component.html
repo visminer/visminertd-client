@@ -9,9 +9,9 @@
       </ol>
     </section>
         
-    <section class="content">
+    <section id="section-content" class="content">
       <nouislider [config]="sliderConfig" [(ngModel)]="sliderRange" style="padding: 0 10px 40px 10px;"></nouislider>
       <tdevolution-boxes></tdevolution-boxes>
-      <p>TD Evolution Works!!!</p>
+      <chart id="stacked-column-chart" [options]="chartConfig"></chart>
     </section>
   </div>
