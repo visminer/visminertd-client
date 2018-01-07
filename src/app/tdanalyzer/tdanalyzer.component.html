@@ -1,16 +1,98 @@
+<div *ngIf="!repository && !references.length; then thenBlock else elseBlock"></div>
+
+<ng-template #thenBlock>
 <div class="content-wrapper">
-    <section class="content-header">
-      <h1>
-        Page Header
-        <small>Optional description</small>
-      </h1>
-      <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> Level</a></li>
-        <li class="active">Here</li>
-      </ol>
-    </section>
-        
-    <section class="content">
-      <p>TD Analyzer Works!!!</p>
-    </section>
-  </div>
+  <section class="content">
+    <div class="alert alert-warn-vmtd alert-dismissable">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <i class="icon fa fa-hand-o-left"></i>Please, select at least one version in the left menu.
+    </div>
+  </section>
+</div>
+</ng-template>
+
+<ng-template #elseBlock>
+<div class="content-wrapper">
+  <!-- Content Header (Page header) -->
+  <section class="content-header">
+    <h1>
+      TD Analyzer
+      <small>Identify which classes have Technical Debt</small>
+    </h1>
+    <ol class="breadcrumb">
+      <li><a href="#"><i class="fa fa-line-chart"></i> TD Evolution</a></li>
+      <li class="active">TD Analyzer</li>
+    </ol>
+  </section>
+  <!-- Main content -->
+  <section class="content">
+    <div class="box box-default">
+      <div class="box-header with-border">
+        <i class="fa fa-database" style="font-size: 15px"></i>
+        <h2 class="box-title">{{repository.name}}</h2>
+        <div class="box-tools pull-right">
+          <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+        </div>
+      </div>
+      <!-- /.box-header -->
+
+      <div class="box-body">
+        <div class="form-group">
+          <div class="col-md-1">
+            <label>Version:</label>
+          </div>
+          <div class="col-md-5">
+            <select style="width: 100%;" [(ngModel)]="selectedReference" (change)="updateViewByReference()">
+              <option *ngFor="let reference of references" [ngValue]="reference">{{reference.name}}</option>
+            </select>
+          </div>
+          <div class="col-md-3">
+            <button class="btn bg-olive btn-flat btn-confirm-analyze-debt" (click)="confirmAllDebtsByReference()">
+              Confirm All from Version
+            </button>
+          </div>
+        </div>
+        <!-- /.form-group -->
+
+        <form class="form-inline" style="padding-top: 40px;">
+          <div class="form-group col-lg-4 col-xs-6 col-md-4" style="padding-top: 10px; padding-bottom: 10px;" *ngFor="let file of files$ | async">
+            <div class="box-analyzer-item">
+              <div class="box-header with-border" style="border-bottom-color: rgba(38, 28, 92, 0.21);">
+                <a href="#" class="box-title" (click)="showTypeSmellsDetails(file)" style="font-weight: bold;">{{file.filename}}</a>
+                <div class="box-tools pull-right">
+                  <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                </div>
+                <!-- /.box-tools -->
+              </div>
+              <!-- /.box-header -->
+              <div class="box-body" style="border-bottom: 1px solid #c8c7d4;">
+
+                <span class="label bg-code-debt span-analyze-debt" *ngFor="let debt of file.debts" style="margin-right: 5px;">
+                  {{debt.name}}
+                  <button class="btn btn-span-tool" (click)="removeDebt(file, debt)" 
+                  onclick="this.parentElement.style.display='none';"><i class="fa fa-times"></i></button>
+                  <button class="btn btn-span-tool" *ngIf="debt.value"
+                  onclick="this.style.display='none'; this.previousElementSibling.style.display='none'"
+                  (click)="confirmDebt(file, debt)"><i class="fa fa-plus"></i></button>
+                </span>
+
+              </div>
+              <!-- /.box-body -->
+              <div class="box-body">
+                <span class="label bg-olive span-analyze-indicator" style="margin-right: 5px;" *ngFor="let indicator of file.indicators">
+                    {{indicator.name}} 
+                  </span>
+              </div>
+
+            </div>
+            <!-- /.box -->
+          </div>
+        </form>
+      </div>
+      <!-- /.box-body -->
+    </div>
+    <!-- /.box -->
+  </section>
+  <!-- /.content -->
+</div>
+</ng-template>
