@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
 import { TDAnalyzerComponent } from './tdanalyzer.component';
+import { TDAnalyzerService } from './tdanalyzer.service';
 
 @NgModule({
   imports: [
@@ -10,6 +11,7 @@ import { TDAnalyzerComponent } from './tdanalyzer.component';
     FormsModule
   ],
   declarations: [TDAnalyzerComponent],
+  providers: [TDAnalyzerService],
   exports: [TDAnalyzerComponent]
 })
 export class TDAnalyzerModule { }

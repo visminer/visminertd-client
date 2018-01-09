@@ -14,7 +14,6 @@ export class SidebarService {
   getRepositories(): Observable<Repository[]> {
     return this.http.get<Repository[]>('http://localhost:3000/api/repository/all')
     .pipe(
-      tap(repositories => console.log('feteched all repositories')),
       catchError(err => [])
     );
   }
@@ -22,7 +21,6 @@ export class SidebarService {
   getReferences(repository_id: string): Observable<Reference[]> {
     return this.http.get<Reference[]>(`http://localhost:3000/api/reference/repository/${repository_id}`)
     .pipe(
-      tap(references => console.log(`feteched all references from ${repository_id}`)),
       catchError(err => [])
     );
   }
