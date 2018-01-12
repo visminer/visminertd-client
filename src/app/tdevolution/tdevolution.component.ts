@@ -22,36 +22,36 @@ export class TDEvolutionComponent implements OnInit {
   ngOnInit() {
     this.repository = this.visminerServ.repository;
     this.references = this.visminerServ.references;
+    this.sliderRange = [0, this.references.length - 1];    
     this.loadSlider();
     this.loadChart();
   }
 
+  //TODO: Move slide to a component
   loadSlider() {
-    var references = this.references;
-    var max = references.length - 1;
-    this.sliderRange = [0, max];
+    var self = this;
     this.sliderConfig = {
       behaviour: 'drag',
       connect: true,
-      start: [0, max],
+      start: [0, this.references.length - 1],
       keyboard: true,
       step: 1,
-      range: {
-        min: 0,
-        max: max
-      },
       pips: {
         mode: 'steps',
-        density: 0,
         format: {
           to: function(value){
-          return references[value].name;
+            return self.references[value].name;
           }
         }
       }
     };
   }
 
+  onChangeSlider(values) {
+    this.sliderRange = [values[0], values[1]];
+ }
+
+  //TODO: Move chart to a component
   loadChart() {
     var references = this.references;
     var seriesArray = [];

@@ -3,13 +3,6 @@
     color: #d2d6de;
 }
 
-.alert-warn-vmtd{
-	background-color: #00C0EF;
-	border-color: #00C0EF;
-	color: white;
-	font-size: 18px;
-}
-
 .wrap { 
 	white-space: pre-wrap;      /* CSS3 */   
 	white-space: -moz-pre-wrap; /* Firefox */    

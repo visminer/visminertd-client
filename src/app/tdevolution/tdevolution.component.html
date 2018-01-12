@@ -24,8 +24,16 @@
   </section>
       
   <section id="section-content" class="content">
-    <nouislider [config]="sliderConfig" [(ngModel)]="sliderRange" style="padding: 0 10px 40px 10px;"></nouislider>
-    <tdevolution-boxes></tdevolution-boxes>
+    <nouislider [config]="sliderConfig"
+                [min]="0"
+                [max]="references.length - 1" 
+                [(ngModel)]="sliderRange" 
+                (change)="onChangeSlider($event)" 
+                style="padding: 0 10px 40px 10px;"></nouislider>
+    <tdevolution-boxes [sliderRange]="sliderRange" [references]="references"></tdevolution-boxes>
+    {{sliderRange}}
+    {{visminerServ.references.length}}
+    {{references.length}}
     <chart id="stacked-column-chart" [options]="chartConfig"></chart>
   </section>
 </div>
