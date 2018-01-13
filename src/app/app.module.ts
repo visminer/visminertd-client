@@ -3,6 +3,8 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
+import { ModalModule } from 'ngx-bootstrap/modal';
+
 import { VisminerService } from './shared/services/visminer.service';
 import { SidebarService } from './shared/components/sidebar/sidebar.service';
 
@@ -21,6 +23,7 @@ import { AppRoutingModule } from './app-routing.module';
     SidebarComponent,
   ],
   imports: [
+    ModalModule.forRoot(),
     BrowserModule,
     HttpClientModule,
     FormsModule,
