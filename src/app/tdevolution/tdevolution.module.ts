@@ -5,6 +5,8 @@ import { TDEvolutionBoxesComponent } from './boxes/boxes.component';
 import { NouisliderComponent } from 'ng2-nouislider/src/nouislider';
 import { ChartModule } from 'angular2-highcharts';
 import { HighchartsStatic } from 'angular2-highcharts/dist/HighchartsService';
+import { TDEvolutionService } from './tdevolution.service';
+import { TDAnalyzerService } from '../tdanalyzer/tdanalyzer.service';
 
 declare var require: any;
 export function highchartsFactory() {
@@ -22,6 +24,8 @@ export function highchartsFactory() {
       provide: HighchartsStatic,
       useFactory: highchartsFactory
     },
+    TDEvolutionService,
+    TDAnalyzerService
   ],
   exports: [TDEvolutionComponent]
 })
