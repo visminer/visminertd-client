@@ -5,6 +5,7 @@ export class Reference {
     name: string;
     path: string;
     type: string;
+    commitsLength: number;    
     commits: string[];
 
 }

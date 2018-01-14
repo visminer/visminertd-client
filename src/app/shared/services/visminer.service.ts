@@ -17,6 +17,7 @@ export class VisminerService {
       this.references.splice(index, 1);
     } else {
       this.references.push(reference);
+      this.references.sort((ref1,ref2) => ref1.commitsLength - ref2.commitsLength);
     }
   }
 

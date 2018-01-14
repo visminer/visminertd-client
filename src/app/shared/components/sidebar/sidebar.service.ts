@@ -19,7 +19,7 @@ export class SidebarService {
   }
 
   getReferences(repository_id: string): Observable<Reference[]> {
-    return this.http.get<Reference[]>(`http://localhost:3000/api/reference/repository/${repository_id}`)
+    return this.http.get<Reference[]>(`http://localhost:3000/api/reference/repository/${repository_id}/sorted`)
     .pipe(
       catchError(err => [])
     );
