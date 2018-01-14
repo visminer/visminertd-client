@@ -7,6 +7,7 @@ import { TDAnalyzerService } from './tdanalyzer.service';
 import { TDItemDetailsComponent } from './td-item-details/td-item-details.component';
 import { TDFormComponent } from './td-item-details/td-form/td-form.component';
 import { TDCodeSmellsComponent } from './td-item-details/td-code-smells/td-code-smells.component';
+import { TDFormService } from './td-item-details/td-form/td-form.service';
 
 @NgModule({
   imports: [
@@ -19,7 +20,10 @@ import { TDCodeSmellsComponent } from './td-item-details/td-code-smells/td-code-
     TDFormComponent,
     TDCodeSmellsComponent
   ],
-  providers: [TDAnalyzerService],
+  providers: [
+    TDAnalyzerService,
+    TDFormService
+  ],
   exports: [TDAnalyzerComponent],
   entryComponents: [TDItemDetailsComponent]
 })

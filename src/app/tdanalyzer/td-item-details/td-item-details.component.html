@@ -1,20 +1,25 @@
-<div class="modal-header">
-  <h4 class="modal-title pull-left">{{commit}}</h4>
-  <button type="button" class="close pull-right" aria-label="Close" (click)="bsModalRef.hide()">
-    <span aria-hidden="true">&times;</span>
-  </button>
-</div>
-<div class="modal-body">
-  <ul class="nav nav-tabs">
-    <li><button class="btn btn-link" (click)="updateView('code_smells')">Code Smells</button></li>
-    <li><button class="btn btn-link" (click)="updateView('td_form')">TD Form</button></li>
-  </ul>
+<div class="modal-dialog modal-lg mx-auto">
+  <div class="modal-content">
 
-  <div [ngSwitch]="tabView">
-    <app-td-code-smells *ngSwitchCase="'code_smells'"></app-td-code-smells>
-    <app-td-form *ngSwitchCase="'td_form'"></app-td-form>
+    <div class="modal-header">
+      <h4 class="modal-title pull-left">{{tdItem?.filename}}</h4>
+      <button type="button" class="close pull-right" aria-label="Close" (click)="bsModalRef.hide()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+
+    <div class="modal-body">
+
+      <ul class="nav nav-tabs">
+        <li><button class="btn btn-link " [class.tab-active]="tabView === 'code_smells'" (click)="updateView('code_smells')">Code Smells</button></li>
+        <li><button class="btn btn-link" [class.tab-active]="tabView === 'td_form'" (click)="updateView('td_form')">TD Form</button></li>
+      </ul>
+
+      <div [ngSwitch]="tabView">
+        <app-td-code-smells *ngSwitchCase="'code_smells'"></app-td-code-smells>
+        <app-td-form *ngSwitchCase="'td_form'" [tdItem]="tdItem"></app-td-form>
+      </div>
+
+    </div>
   </div>
-</div>
-<div class="modal-footer">
-  <button type="button" class="btn btn-default" (click)="bsModalRef.hide()">Close</button>
-</div>
+</div>    

@@ -1,3 +1,80 @@
-<p>
-  td-form works!
-</p>
+<div class="row">
+  <form class="form-vertical" (ngSubmit)="onSubmit()" #tdForm="ngForm" name="tdForm">
+    <div class="col-sm-6">
+
+      <div class="form-group">
+        <label for="id" class="control-label">ID</label>
+        <div class="">
+          <input type="text" class="form-control" id="id" name="id" value="{{tdItem._id}}" readonly>
+        </div>
+      </div>
+      
+      <div class="form-group">
+        <label for="responsible" class="control-label">Responsible</label>
+        <div class="">
+          <input type="text" class="form-control" id="responsible" name="responsible" [(ngModel)]="tdItem.responsible">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="description" class="control-label">Description</label>
+        <div class="">
+          <textarea class="form-control" style="height: 215px;" id="description" name="description" [(ngModel)]="tdItem.description"></textarea>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="col-sm-6">
+
+      <div class="form-group">
+        <label class="control-label">Types</label>
+        <div>
+          <div class="checkbox" *ngFor="let debt of tdItem.debts">
+            <label><input type="checkbox" name="{{debt.name}}" [checked]="debt.value" (change)="debt.value = debt.value === 1 ? 0 : 1">{{debt.name}}</label>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="intentional" class="control-label">Intentional</label>
+        <div class="">
+          <select class="form-control" [(ngModel)]="tdItem.intentional" name="intentional">
+            <option [value]="yes" [selected]="tdItem.intentional === 'yes'">Yes</option>
+            <option [value]="no" [selected]="tdItem.intentional === 'no'">No</option>
+            <option [value]="not_sure" [selected]="tdItem.intentional === 'not_sure' || !tdItem.intentional">Not sure</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="principal" class="control-label">Principal (min)</label>
+        <div class="">
+          <input type="number" class="form-control" id="principal" name="principal" [(ngModel)]="tdItem.principal">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="interest" class="control-label">Interest (min)</label>
+        <div class="">
+          <input type="number" class="form-control" id="interest" name="interest" [(ngModel)]="tdItem.interest">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="interest_probability" class="control-label" style="padding-left: 0px;">Interest Probability (%)</label>
+        <div class="">
+          <input type="number" min="0" max="100" class="form-control" id="interest_probability" name="interest_probability" [(ngModel)]="tdItem.interest_probability">
+        </div>
+      </div>
+
+      </div>
+
+      <div class="form-group">
+        <div class="col-sm-offset-3 col-sm-9" style="text-align:right;padding-right:65px;">
+          <button type="submit" class="btn btn-success">Save</button>
+        </div>
+    </div>
+
+  </form>
+</div>

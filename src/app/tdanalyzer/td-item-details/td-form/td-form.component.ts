@@ -1,4 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs/Subscription';
+import { Component, OnInit, Input } from '@angular/core';
+
+import { TDFormService } from './td-form.service';
+import { TDItem } from './../../../shared/models/TDItem';
 
 @Component({
   selector: 'app-td-form',
@@ -7,9 +11,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TDFormComponent implements OnInit {
 
-  constructor() { }
+  @Input() tdItem: TDItem;
+
+  constructor(private formServ: TDFormService) { }
 
   ngOnInit() {
+  }
+
+  onSubmit() {
+    this.formServ.updateTDItem(this.tdItem).subscribe(r => {
+      if (r.success) { alert('Item updated.'); }
+      else { alert('An error occurred.'); }
+    });
   }
 
 }

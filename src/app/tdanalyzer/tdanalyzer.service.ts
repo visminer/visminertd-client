@@ -1,14 +1,14 @@
-import { tap, catchError } from 'rxjs/operators';
+import { catchError } from 'rxjs/operators';
 import { Observable } from 'rxjs/Observable';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 import { TDItem } from './../shared/models/TDItem';
 
+const DEFAULT_HEADER = { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) };
+
 @Injectable()
 export class TDAnalyzerService {
-
-  DEFAULT_HEADER = { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) };
 
   constructor(private http: HttpClient) { }
 
@@ -30,7 +30,7 @@ export class TDAnalyzerService {
   confirmAllDebt(commit: string): Observable<any> {
     return this.http.put<any>(`http://localhost:3000/api/technicaldebt/confirmall`,
     { commit: commit },
-    this.DEFAULT_HEADER)
+    DEFAULT_HEADER)
     .pipe(
       catchError(err => null)
     );
@@ -39,7 +39,7 @@ export class TDAnalyzerService {
   private changeDebtStatus(_id: string, debt: string, option: string): Observable<any> {
     return this.http.put<any>(`http://localhost:3000/api/technicaldebt/${option}`,
     { _id: _id, debt: debt },
-    this.DEFAULT_HEADER)
+    DEFAULT_HEADER)
     .pipe(
       catchError(err => null)
     );

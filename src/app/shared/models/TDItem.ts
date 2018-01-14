@@ -20,5 +20,11 @@ export class TDItem {
     filehash: number;
     indicators: TDItemIndicator[];
     debts: TDItemDebt[];
+    responsible: string;
+    description: string;
+    intentional: string;
+    principal: number;
+    interest: number;
+    interest_probability: number;
 
 }
