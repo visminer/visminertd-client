@@ -31,8 +31,8 @@
       <!-- small box -->
       <div class="small-box bg-yellow">
         <div class="inner sb-inner-evolution">
-          <h3 class="sb-number">
-              123 ➞ 123</h3>
+          <h3 class="sb-number" *ngIf="tdBoxes">
+            {{ tdBoxes.indicatorsTotal[0] }} ➞ {{ tdBoxes.indicatorsTotal[tdBoxes.indicatorsTotal.length - 1] }}</h3>
         </div>
         <div class="icon" style="font-size:70px">
           <i class="ion ion-bug"></i>
@@ -44,8 +44,8 @@
       <!-- small box -->
       <div class="small-box bg-red">
         <div class="inner sb-inner-evolution">
-          <h3 class="sb-number">
-              123 ➞ 123</h3>
+          <h3 class="sb-number" *ngIf="tdBoxes">
+            {{ tdBoxes.debtsTotal[0] }} ➞ {{ tdBoxes.debtsTotal[tdBoxes.debtsTotal.length - 1] }}</h3>
         </div>
         <div class="icon" style="font-size:70px">
           <i class="ion ion-social-usd"></i>

@@ -26,6 +26,12 @@ export class TDEvolutionComponent implements OnInit {
   chartConfig: Object;
   tdReport: TDReport[];
 
+  tdBoxes: {
+    classesTotal: number[],
+    indicatorsTotal: number[],
+    debtsTotal: number[],
+  }
+
   constructor(private tdEvolutionServ: TDEvolutionService, private visminerServ: VisminerService) { }
 
   ngOnInit() {
@@ -63,7 +69,7 @@ export class TDEvolutionComponent implements OnInit {
  }
 
  loadChart() {
-  var seriesArray = this.loadSeries();
+  let seriesArray = this.loadSeries();
   this.chartConfig = {
     title : { text : 'Technical Debt X Versions' },
     xAxis: { categories: this.referenceNames },
@@ -117,33 +123,36 @@ export class TDEvolutionComponent implements OnInit {
   }
 
   loadSeries() {
-    this.referenceNames = [];  
-    let seriesArray = [];
+    this.referenceNames = [];
+    this.tdBoxes = {
+      classesTotal: [],
+      indicatorsTotal: [],
+      debtsTotal: [],
+    }
     let chartCodeDebtSeries = [];
     let chartDesignDebtSeries = [];
     let chartDefectDebtSeries = [];
     let chartTestDebtSeries = [];
     let chartRequirementDebtSeries = [];
-    let j = 0;
+    let seriesArray = [];
 
     for (let i = this.sliderRange[0]; i < this.sliderRange[1] + 1; i++) {
       this.referenceNames.push(this.references[i].name);
       let report: TDReport = this.getReport(this.references[i].name);
 
       let tdItens: TDItem[]  = report.technicaldebt;
-      let totalCodeDebt = this.getTotalOfDebtsByType(tdItens, "CODE_DEBT");
-      let totalDesignDebt = this.getTotalOfDebtsByType(tdItens, "DESIGN_DEBT");
-      let totalDefectDebt = this.getTotalOfDebtsByType(tdItens, "DEFECT_DEBT");
-      let totalTestDebt = this.getTotalOfDebtsByType(tdItens, "TEST_DEBT");
-      let totalRequirementDebt = this.getTotalOfDebtsByType(tdItens, "REQUIREMENT_DEBT");
-
-      chartCodeDebtSeries.push(totalCodeDebt);
-      chartDesignDebtSeries.push(totalDesignDebt);
-      chartDefectDebtSeries.push(totalDefectDebt);
-      chartTestDebtSeries.push(totalTestDebt);
-      chartRequirementDebtSeries.push(totalRequirementDebt);
+      chartCodeDebtSeries.push(this.getTotalOfDebtsByType(tdItens, "CODE_DEBT"));
+      chartDesignDebtSeries.push(this.getTotalOfDebtsByType(tdItens, "DESIGN_DEBT"));
+      chartDefectDebtSeries.push(this.getTotalOfDebtsByType(tdItens, "DEFECT_DEBT"));
+      chartTestDebtSeries.push(this.getTotalOfDebtsByType(tdItens, "TEST_DEBT"));
+      chartRequirementDebtSeries.push(this.getTotalOfDebtsByType(tdItens, "REQUIREMENT_DEBT"));
+      
+      this.tdBoxes.indicatorsTotal.push(this.getTotalOfIndicators(tdItens));
     }
     
+    this.referenceNames.forEach((ref, index) => {
+      this.tdBoxes.debtsTotal.push(chartCodeDebtSeries[index] + chartDesignDebtSeries[index] + chartDefectDebtSeries[index] + chartTestDebtSeries[index] + chartRequirementDebtSeries[index]);
+    });
     seriesArray.push({ color: '#dd3939', name: 'Defect Debt', data: chartDefectDebtSeries });
     seriesArray.push({ color: '#f39c12', name: 'Test Debt', data: chartTestDebtSeries });
     seriesArray.push({ color: '#8a6d3b', name: 'Requirement Debt', data: chartRequirementDebtSeries });
@@ -175,6 +184,15 @@ getReport(referenceName: string) {
 			}
 		}
 		return total;
+  }
+
+  getTotalOfIndicators(tdItens: TDItem[]) {
+    let total = 0;
+    tdItens.forEach(tdItem => {
+      total += tdItem.indicators.length;
+    });
+
+    return total;
   }
 
 }

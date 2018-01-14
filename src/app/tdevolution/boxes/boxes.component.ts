@@ -9,6 +9,7 @@ import { Reference } from '../../shared/models/Reference';
 export class TDEvolutionBoxesComponent {
   @Input() sliderRange: number[];
   @Input() references: Reference[];
+  @Input() tdBoxes: any;
 
   constructor() { }
 }
