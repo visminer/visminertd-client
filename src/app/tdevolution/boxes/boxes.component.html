@@ -18,8 +18,8 @@
       <!-- small box -->
       <div class="small-box bg-green">
         <div class="inner sb-inner-evolution">
-          <h3 class="sb-number">
-              123 ➞ 123</h3>
+          <h3 class="sb-number" *ngIf="tdBoxes">
+            {{ tdBoxes.classesTotal[0] }} ➞ {{ tdBoxes.classesTotal[tdBoxes.classesTotal.length - 1] }}</h3>
         </div>
         <div class="icon" style="font-size:70px">
           <i class="ion ion-document"></i>

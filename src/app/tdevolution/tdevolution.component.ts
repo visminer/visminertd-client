@@ -10,6 +10,7 @@ import { TDEvolutionService } from './tdevolution.service';
 import { NouisliderComponent } from 'ng2-nouislider/src/nouislider';
 import { ChartComponent } from 'angular2-highcharts';
 import { TDItem } from '../shared/models/TDItem';
+import { FilesReport } from '../shared/models/CodeAnalysisReport';
 
 @Component({
   selector: 'app-tdevolution',
@@ -25,6 +26,7 @@ export class TDEvolutionComponent implements OnInit {
   sliderConfig: any;
   chartConfig: Object;
   tdReport: TDReport[];
+  filesReport: FilesReport[];
 
   tdBoxes: {
     classesTotal: number[],
@@ -38,6 +40,11 @@ export class TDEvolutionComponent implements OnInit {
     this.repository = this.visminerServ.repository;
     this.references = this.visminerServ.references;
     this.sliderRange = [0, this.references.length - 1];   
+    this.tdBoxes = {
+      classesTotal: [],
+      indicatorsTotal: [],
+      debtsTotal: [],
+    }
     this.loadSlider();
 
     if (this.repository) {
@@ -46,6 +53,12 @@ export class TDEvolutionComponent implements OnInit {
           this.tdReport = data;
           this.loadChart();    
         }
+      );
+      this.tdEvolutionServ.countFilesByReference(this.repository._id).subscribe(
+        data => {
+          this.filesReport = data;
+          this.setFilesTotalByReference();
+        }  
       );
     }  
   }
@@ -66,6 +79,7 @@ export class TDEvolutionComponent implements OnInit {
   onChangeSlider(values) {
     this.sliderRange = [values[0], values[1]];
     this.loadChart();
+    this.setFilesTotalByReference();
  }
 
  loadChart() {
@@ -124,11 +138,8 @@ export class TDEvolutionComponent implements OnInit {
 
   loadSeries() {
     this.referenceNames = [];
-    this.tdBoxes = {
-      classesTotal: [],
-      indicatorsTotal: [],
-      debtsTotal: [],
-    }
+    this.tdBoxes.debtsTotal = [];
+    this.tdBoxes.indicatorsTotal = [];
     let chartCodeDebtSeries = [];
     let chartDesignDebtSeries = [];
     let chartDefectDebtSeries = [];
@@ -193,6 +204,19 @@ getReport(referenceName: string) {
     });
 
     return total;
+  }
+
+  setFilesTotalByReference() {
+    this.tdBoxes.classesTotal = [];
+    for (let i = this.sliderRange[0]; i < this.sliderRange[1] + 1; i++) {
+      let referenceName = this.references[i].name;
+      this.filesReport.forEach((fileReport) => {
+        // _id is actually the reference name
+        if (referenceName === fileReport._id) {
+          this.tdBoxes.classesTotal.push(fileReport.totalFiles);
+        }
+      });
+    }  
   }
 
 }
