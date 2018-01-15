@@ -4,13 +4,13 @@ import { Observable } from 'rxjs/Observable';
 import { Repository } from '../shared/models/Repository';
 import { Reference } from '../shared/models/Reference';
 import { TDReport } from '../shared/models/TDReport';
+import { TDItem } from '../shared/models/TDItem';
+import { FilesReport } from '../shared/models/CodeAnalysisReport';
 import { VisminerService } from '../shared/services/visminer.service';
 import { TDEvolutionService } from './tdevolution.service';
 
 import { NouisliderComponent } from 'ng2-nouislider/src/nouislider';
 import { ChartComponent } from 'angular2-highcharts';
-import { TDItem } from '../shared/models/TDItem';
-import { FilesReport } from '../shared/models/CodeAnalysisReport';
 
 @Component({
   selector: 'app-tdevolution',
