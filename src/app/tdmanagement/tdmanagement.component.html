@@ -1,0 +1,101 @@
+<div *ngIf="!repository && !references.length; then thenBlock else elseBlock"></div>
+
+<ng-template #thenBlock>
+  <app-alert></app-alert>
+</ng-template>
+
+<ng-template #elseBlock>
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <h1>
+        TD Management
+      </h1>
+      <ol class="breadcrumb">
+          <li><a routerLink="/tdevolution" routerLinkActive="active">TD Evolution</a></li>
+        <li class="active">TD Management</li>
+      </ol>
+    </section>
+  
+    <!-- Main content -->
+    <section class="content" style="padding-top: 40px">
+  
+      <div class="col-md-4">
+        <div class="box box-primary">
+          <div class="box-header with-border">
+            <h3 class="box-title">TO DO</h3>
+            <span class="label span-counter">
+              {{ todo.code.length + todo.design.length }}
+              <!-- {{todoCode.length + todoDesign.length + todoDefect.length + todoTest.length + todoRequirement.length}}                            -->
+            </span>
+            <div class="box-tools pull-right">
+              <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+            </div>
+          </div>
+          <!-- /.box-header -->
+  
+          <div class="box-body" style="padding: 0 10px 0 10px;">
+            <div class="board-management">
+              <ul id="todo_sortable" class="products-list product-list-in-box">
+                
+              </ul>
+            </div>
+          </div>
+  
+        </div>
+      </div>
+  
+      <div class="col-md-4">
+        <div class="box box-primary">
+          <div class="box-header with-border">
+            <h3 class="box-title">DOING</h3>
+            <span class="label span-counter">
+                {{ doing.code.length + doing.design.length }}
+            </span>
+            <div class="box-tools pull-right">
+              <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+            </div>
+          </div>
+          <!-- /.box-header -->
+  
+          <div class="box-body" style="padding: 0 10px 0 10px;">
+            <div class="board-management">
+              <ul id="doing_sortable" class="products-list product-list-in-box">
+                
+              </ul>
+            </div>
+          </div>
+  
+        </div>
+      </div>
+  
+      <div class="col-md-4">
+        <div class="box box-primary">
+          <div class="box-header with-border">
+            <h3 class="box-title">DONE</h3>
+            <span class="label span-counter">
+                {{ done.code.length + done.design.length }}
+            </span>
+            <div class="box-tools pull-right">
+              <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+  
+            </div>
+          </div>
+          <!-- /.box-header -->
+  
+          <div class="box-body" style="padding: 0 10px 0 10px;">
+            <div class="board-management">
+              <ul class="products-list product-list-in-box">
+                
+              </ul>
+            </div>
+          </div>
+  
+        </div>
+      </div>
+  
+    </section>
+    <!-- /.content -->
+  
+  </div>
+</ng-template>

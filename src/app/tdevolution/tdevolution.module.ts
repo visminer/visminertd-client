@@ -1,13 +1,13 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { HighchartsStatic } from 'angular2-highcharts/dist/HighchartsService';
+
 import { TDEvolutionComponent } from './tdevolution.component';
 import { TDEvolutionBoxesComponent } from './boxes/boxes.component';
 import { NouisliderComponent } from 'ng2-nouislider/src/nouislider';
 import { ChartModule } from 'angular2-highcharts';
-import { HighchartsStatic } from 'angular2-highcharts/dist/HighchartsService';
+import { AlertModule } from '../shared/components/alert/alert.module';
 import { TDEvolutionService } from './tdevolution.service';
-import { TDAnalyzerService } from '../tdanalyzer/tdanalyzer.service';
-import { AlertComponent } from '../shared/components/alert/alert.component';
 
 declare var require: any;
 export function highchartsFactory() {
@@ -17,16 +17,16 @@ export function highchartsFactory() {
 @NgModule({
   imports: [
     CommonModule,
-    ChartModule
+    ChartModule,
+    AlertModule,
   ],
-  declarations: [TDEvolutionComponent, TDEvolutionBoxesComponent, AlertComponent, NouisliderComponent],
+  declarations: [TDEvolutionComponent, TDEvolutionBoxesComponent, NouisliderComponent],
   providers: [
     {
       provide: HighchartsStatic,
       useFactory: highchartsFactory
     },
     TDEvolutionService,
-    TDAnalyzerService
   ],
   exports: [TDEvolutionComponent]
 })

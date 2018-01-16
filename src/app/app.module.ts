@@ -13,8 +13,10 @@ import { HeaderComponent } from './shared/components/header/header.component';
 import { SidebarComponent } from './shared/components/sidebar/sidebar.component';
 import { TDAnalyzerModule } from './tdanalyzer/tdanalyzer.module';
 import { TDEvolutionModule } from './tdevolution/tdevolution.module';
+import { TDManagementModule } from './tdmanagement/tdmanagement.module';
 import { HomeModule } from './home/home.module';
 import { AppRoutingModule } from './app-routing.module';
+import { AlertModule } from './shared/components/alert/alert.module';
 
 @NgModule({
   declarations: [
@@ -30,7 +32,9 @@ import { AppRoutingModule } from './app-routing.module';
     AppRoutingModule,
     HomeModule,
     TDAnalyzerModule,
-    TDEvolutionModule
+    TDEvolutionModule,
+    TDManagementModule,
+    AlertModule,
   ],
   providers: [
     VisminerService,
