@@ -24,13 +24,13 @@
                 'bg-test-debt': false,
                 'bg-requirement-debt': false
               }">
-                  {{debt.name | removeChar}}                     
+                  {{debt.name}}                     
               </span>
             </div>
             
             <div style="margin-left: 70px;">
               <span class="label bg-olive span-analyze-indicator" style="margin-right: 5px;" *ngFor="let indicator of item.indicators">
-                  {{indicator.name | removeChar}} | {{indicator.occurrences}} 
+                  {{indicator.name}} | {{indicator.occurrences}} 
               </span>
             </div>
 
