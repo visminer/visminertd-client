@@ -67,8 +67,4 @@ export class TDAnalyzerComponent implements OnInit {
     this.tdanalyzerServ.removeDebt(file._id, debt.name).subscribe(r => console.log(r));
   }
 
-  subStrFilename(fileName: string): string {
-    return fileName.substring(fileName.lastIndexOf('/') + 1, fileName.lastIndexOf('.java'));
-  }
-
 }

@@ -14,10 +14,9 @@ export class RemoveCharPipe implements PipeTransform {
     unwantedChar = unwantedChar || this.unwantedChar;
     replaceChar = replaceChar || this.replaceChar;
 
-    let i = value.length;
     let result = '';
 
-    while (i--) {
+    for (let i = 0; i < value.length; i++) {
       if (value.charAt(i) === unwantedChar) {
         result = result.concat(replaceChar);
       } else {

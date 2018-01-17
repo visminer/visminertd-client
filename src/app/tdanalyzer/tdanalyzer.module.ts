@@ -10,11 +10,13 @@ import { TDCodeSmellsComponent } from './td-item-details/td-code-smells/td-code-
 import { TDFormService } from './td-item-details/td-form/td-form.service';
 import { TDTimelineService } from './td-item-details/td-timeline/td-timeline.service';
 import { TDTimelineComponent } from './td-item-details/td-timeline/td-timeline.component';
+import { PipesModule } from './../shared/pipes/pipes.module';
 
 @NgModule({
   imports: [
     CommonModule,
-    FormsModule
+    FormsModule,
+    PipesModule
   ],
   declarations: [
     TDAnalyzerComponent,
