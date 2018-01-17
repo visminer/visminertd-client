@@ -1,0 +1,42 @@
+<div class="row" style="padding-top: 20px;">
+  <div class="col-md-12">
+    <ul class="timeline">
+      <li class="time-label" *ngFor="let item of tdHistory$ | async">
+        <span class="bg-blue version-timeline">
+            {{item.reference}}
+        </span>
+        <ul class="ul-timeline">
+          <li>
+
+            <div [ngSwitch]="item.intentional">
+              <i class="fa fa-usd bg-green icon-timeline" *ngSwitchCase="'no'"></i>
+              <i class="fa fa-usd bg-red icon-timeline" *ngSwitchCase="'yes'"></i>
+              <i class="fa bg-gray icon-timeline" style="color: white" *ngSwitchDefault>-</i>
+            </div>
+
+            <div class="timeline-item" style="display: inline;">
+
+              <span *ngFor="let debt of item.debts" class="label span-analyze-debt" style="margin-right: 5px;"
+              [ngClass]="{
+                'bg-code-debt': debt.name === 'CODE_DEBT',
+                'bg-design-debt': debt.name === 'DESIGN_DEBT',
+                'bg-defect-debt': false,
+                'bg-test-debt': false,
+                'bg-requirement-debt': false
+              }">
+                  {{debt.name | removeChar}}                     
+              </span>
+            </div>
+            
+            <div style="margin-left: 70px;">
+              <span class="label bg-olive span-analyze-indicator" style="margin-right: 5px;" *ngFor="let indicator of item.indicators">
+                  {{indicator.name | removeChar}} | {{indicator.occurrences}} 
+              </span>
+            </div>
+
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+</div>

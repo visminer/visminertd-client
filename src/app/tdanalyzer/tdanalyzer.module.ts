@@ -8,6 +8,8 @@ import { TDItemDetailsComponent } from './td-item-details/td-item-details.compon
 import { TDFormComponent } from './td-item-details/td-form/td-form.component';
 import { TDCodeSmellsComponent } from './td-item-details/td-code-smells/td-code-smells.component';
 import { TDFormService } from './td-item-details/td-form/td-form.service';
+import { TDTimelineService } from './td-item-details/td-timeline/td-timeline.service';
+import { TDTimelineComponent } from './td-item-details/td-timeline/td-timeline.component';
 
 @NgModule({
   imports: [
@@ -18,11 +20,13 @@ import { TDFormService } from './td-item-details/td-form/td-form.service';
     TDAnalyzerComponent,
     TDItemDetailsComponent,
     TDFormComponent,
-    TDCodeSmellsComponent
+    TDCodeSmellsComponent,
+    TDTimelineComponent
   ],
   providers: [
     TDAnalyzerService,
-    TDFormService
+    TDFormService,
+    TDTimelineService
   ],
   exports: [TDAnalyzerComponent],
   entryComponents: [TDItemDetailsComponent]
