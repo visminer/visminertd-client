@@ -26,5 +26,18 @@ export class TDItem {
     principal: number;
     interest: number;
     interest_probability: number;
+    commit: string;
+    repository: string;
+    reference: string;
+
+    private _commit_date: Date;
+
+    get commit_date() {
+        return this._commit_date;
+    }
+
+    set commit_date(new_commit_date: any) {
+        this._commit_date = new Date(new_commit_date);
+    }
 
 }
