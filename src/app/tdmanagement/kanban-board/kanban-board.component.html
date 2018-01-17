@@ -3,7 +3,7 @@
     <div class="box-header with-border">
       <h3 class="box-title">{{ title }}</h3>
       <span class="label span-counter">
-          {{ tdItems.code.length + tdItems.design.length }}
+          {{ tdItems.code.length + tdItems.design.length + tdItems.defect.length + tdItems.test.length + tdItems.requirement.length }}
       </span>
       <div class="box-tools pull-right">
           <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
@@ -19,6 +19,15 @@
             </li>
             <li class="item" *ngFor="let tdItem of tdItems.design">
                 <board-item [boardName]="title" debtName="DESIGN" [tdItem]="tdItem"></board-item>
+            </li>
+            <li class="item" *ngFor="let tdItem of tdItems.defect">
+                <board-item [boardName]="title" debtName="DEFECT" [tdItem]="tdItem"></board-item>
+            </li>
+            <li class="item" *ngFor="let tdItem of tdItems.test">
+                <board-item [boardName]="title" debtName="TEST" [tdItem]="tdItem"></board-item>
+            </li>
+            <li class="item" *ngFor="let tdItem of tdItems.requirement">
+                <board-item [boardName]="title" debtName="REQUIREMENT" [tdItem]="tdItem"></board-item>
             </li>
           </ul>
       </div>

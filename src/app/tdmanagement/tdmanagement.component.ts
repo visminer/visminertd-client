@@ -21,14 +21,23 @@ export class TDManagementComponent implements OnInit {
   todo: {
     code: TDItem[],
     design: TDItem[],
+    defect: TDItem[],
+    test: TDItem[],
+    requirement: TDItem[],
   };
   doing: {
     code: TDItem[],
     design: TDItem[],
+    defect: TDItem[],
+    test: TDItem[],
+    requirement: TDItem[],
   };
   done: {
     code: TDItem[],
     design: TDItem[],
+    defect: TDItem[],
+    test: TDItem[],
+    requirement: TDItem[],
   };
 
   constructor(private tdManagementServ: TDManagementService, private visminerServ: VisminerService) { }
@@ -52,14 +61,23 @@ export class TDManagementComponent implements OnInit {
     this.todo = {
       code: [],
       design: [],
+      defect: [],
+      test: [],
+      requirement: []
     };
     this.doing = {
       code: [],
       design: [],
+      defect: [],
+      test: [],
+      requirement: []
     };
     this.done = {
       code: [],
       design: [],
+      defect: [],
+      test: [],
+      requirement: []
     };
     
   }
@@ -67,19 +85,53 @@ export class TDManagementComponent implements OnInit {
   loadKanbanItems() {
     this.tdReport.technicaldebt.forEach( tdItem => {
       tdItem.debts.forEach( debtObj => {
-        if (debtObj.value == 1 && debtObj.name === "CODE_DEBT") {
-          this.todo.code.push(tdItem);
-        } else if (debtObj.value == 1 && debtObj.name === "DESIGN_DEBT") {
-          this.todo.design.push(tdItem);          
-        } else if (debtObj.value == 2 && debtObj.name === "CODE_DEBT") {
-          this.doing.code.push(tdItem);
-        } else if (debtObj.value == 2 && debtObj.name === "DESIGN_DEBT") {
-          this.doing.design.push(tdItem);          
-        } else if (debtObj.value == 3 && debtObj.name === "CODE_DEBT") {
-          this.done.code.push(tdItem);
-        } else if (debtObj.value == 3 && debtObj.name === "DESIGN_DEBT") {
-          this.done.design.push(tdItem);          
-        } 
+        switch (debtObj.name) {
+          case "CODE_DEBT": {
+            if (debtObj.value == 1)
+              this.todo.code.push(tdItem);
+            else if (debtObj.value == 2)
+              this.doing.code.push(tdItem);
+            else if (debtObj.value == 3)
+              this.done.code.push(tdItem);
+            break;
+          }
+          case "DESIGN_DEBT": {
+            if (debtObj.value == 1)
+              this.todo.design.push(tdItem);
+            else if (debtObj.value == 2)
+              this.doing.design.push(tdItem);
+            else if (debtObj.value == 3)
+              this.done.design.push(tdItem);
+            break;
+          }
+          case "DEFECT_DEBT": {
+            if (debtObj.value == 1)
+              this.todo.defect.push(tdItem);
+            else if (debtObj.value == 2)
+              this.doing.defect.push(tdItem);
+            else if (debtObj.value == 3)
+              this.done.defect.push(tdItem);
+            break;
+          }
+          case "TEST_DEBT": {
+            if (debtObj.value == 1)
+              this.todo.test.push(tdItem);
+            else if (debtObj.value == 2)
+              this.doing.test.push(tdItem);
+            else if (debtObj.value == 3)
+              this.done.test.push(tdItem);
+            break;
+          }
+          case "REQUIREMENT_DEBT": {
+            if (debtObj.value == 1)
+              this.todo.requirement.push(tdItem);
+            else if (debtObj.value == 2)
+              this.doing.requirement.push(tdItem);
+            else if (debtObj.value == 3)
+              this.done.requirement.push(tdItem);
+            break;
+          }
+        }
       });      
     });
   }
