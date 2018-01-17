@@ -1,0 +1,27 @@
+<div class="col-md-4">
+  <div class="box box-primary">
+    <div class="box-header with-border">
+      <h3 class="box-title">{{ title }}</h3>
+      <span class="label span-counter">
+          {{ tdItems.code.length + tdItems.design.length }}
+      </span>
+      <div class="box-tools pull-right">
+          <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+      </div>
+    </div>
+    <!-- /.box-header -->
+
+    <div class="box-body" style="padding: 0 10px 0 10px;">
+      <div class="board-management">
+          <ul id="todo_sortable" class="products-list product-list-in-box">
+            <li class="item" *ngFor="let tdItem of tdItems.code">
+                <board-item [boardName]="title" debtName="CODE" [tdItem]="tdItem"></board-item>
+            </li>
+            <li class="item" *ngFor="let tdItem of tdItems.design">
+                <board-item [boardName]="title" debtName="DESIGN" [tdItem]="tdItem"></board-item>
+            </li>
+          </ul>
+      </div>
+    </div>
+  </div>
+</div>

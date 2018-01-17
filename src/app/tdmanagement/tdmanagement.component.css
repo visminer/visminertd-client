@@ -1,7 +1,44 @@
+.board-management {
+    -webkit-transform: translate(0, 0);
+    -ms-transform: translate(0, 0);
+    -o-transform: translate(0, 0);
+    transform: translate(0, 0);
+    max-height: 400px;
+    overflow: auto;
+    overflow-x: hidden;
+  }
+
 .span-counter {
     background-color: #FC5353 !important;
     border-radius: 15px;
     padding: 0.1em 1em;
     margin-left: 5px;
     font-size: 12px;
+}
+
+.span-pay {
+    background-color: #00A65A !important;
+    padding: 0.2em 1.0em 0.3em;
+    margin-top: 5px;
+    cursor: pointer;
+}
+
+.bg-code-debt {
+    background-color: #1B93A7!important;
+}
+
+.bg-design-debt {
+    background-color: #91A28B!important;
+}
+
+.bg-defect-debt {
+    background-color: #dd3939!important;
+}
+
+.bg-test-debt {
+    background-color: #f39c12!important;
+}
+
+.bg-requirement-debt {
+    background-color: #8a6d3b!important;
 }

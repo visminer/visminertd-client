@@ -1,0 +1,17 @@
+.board-management {
+    -webkit-transform: translate(0, 0);
+    -ms-transform: translate(0, 0);
+    -o-transform: translate(0, 0);
+    transform: translate(0, 0);
+    max-height: 500px;
+    overflow: auto;
+    overflow-x: hidden;
+  }
+
+.span-counter {
+    background-color: #FC5353 !important;
+    border-radius: 15px;
+    padding: 0.1em 1em;
+    margin-left: 5px;
+    font-size: 12px;
+}

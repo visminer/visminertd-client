@@ -4,6 +4,8 @@ import { CommonModule } from '@angular/common';
 import { TDManagementComponent } from './tdmanagement.component';
 import { TDManagementService } from './tdmanagement.service';
 import { AlertModule } from '../shared/components/alert/alert.module';
+import { KanbanBoardComponent } from './kanban-board/kanban-board.component';
+import { BoardItemComponent } from './board-item/board-item.component';
 
 @NgModule({
   imports: [
@@ -11,7 +13,7 @@ import { AlertModule } from '../shared/components/alert/alert.module';
     AlertModule,
   ],
   declarations: [
-    TDManagementComponent,
+    TDManagementComponent, KanbanBoardComponent, BoardItemComponent,
   ],
   providers: [
     TDManagementService,

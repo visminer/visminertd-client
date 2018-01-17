@@ -67,21 +67,20 @@ export class TDManagementComponent implements OnInit {
   loadKanbanItems() {
     this.tdReport.technicaldebt.forEach( tdItem => {
       tdItem.debts.forEach( debtObj => {
-        if (debtObj.value == 0 && debtObj.name === "CODE_DEBT") {
+        if (debtObj.value == 1 && debtObj.name === "CODE_DEBT") {
           this.todo.code.push(tdItem);
-        } else if (debtObj.value == 0 && debtObj.name === "DESIGN_DEBT") {
-          this.todo.design.push(tdItem);          
-        } else if (debtObj.value == 1 && debtObj.name === "CODE_DEBT") {
-          this.doing.code.push(tdItem);
         } else if (debtObj.value == 1 && debtObj.name === "DESIGN_DEBT") {
-          this.doing.design.push(tdItem);          
+          this.todo.design.push(tdItem);          
         } else if (debtObj.value == 2 && debtObj.name === "CODE_DEBT") {
-          this.done.code.push(tdItem);
+          this.doing.code.push(tdItem);
         } else if (debtObj.value == 2 && debtObj.name === "DESIGN_DEBT") {
+          this.doing.design.push(tdItem);          
+        } else if (debtObj.value == 3 && debtObj.name === "CODE_DEBT") {
+          this.done.code.push(tdItem);
+        } else if (debtObj.value == 3 && debtObj.name === "DESIGN_DEBT") {
           this.done.design.push(tdItem);          
         } 
       });      
     });
   }
-
 }
