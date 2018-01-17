@@ -31,7 +31,7 @@
         <label class="control-label">Types</label>
         <div>
           <div class="checkbox" *ngFor="let debt of tdItem.debts">
-            <label><input type="checkbox" name="{{debt.name}}" [checked]="debt.value" (change)="debt.value = debt.value === 1 ? 0 : 1">{{debt.name}}</label>
+            <label><input type="checkbox" name="{{debt.name}}" [checked]="debt.value" (change)="debt.value = debt.value === 1 ? 0 : 1">{{debt.name | removeChar}}</label>
           </div>
         </div>
       </div>

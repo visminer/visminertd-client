@@ -16,3 +16,259 @@
 	color: white !important;
 	text-decoration: underline !important;
 }
+
+#slider {
+    margin-right: 15px;
+    margin-left: 15px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+#slider .ui-rangeSlider-bar {
+    background-color: #74A5C1;
+    border-radius: 15px;
+}
+
+#slider .ui-rangeSlider-handle {
+    width: 15px;
+    background-color: #3C8DBC;
+}
+
+#slider .ui-rangeSlider-leftHandle {
+    border-radius: 5px 0 0 5px;
+}
+
+#slider .ui-rangeSlider-rightHandle {
+    border-radius: 0 5px 5px 0;
+}
+
+.alert-warn-vmtd{
+	background-color: #00C0EF;
+	border-color: #00C0EF;
+	color: white;
+	font-size: 18px;
+}
+
+.filter-header{
+	text-align: center;
+    color: #BDBDBD !important;
+    font-weight: bold;
+}
+
+.filter-version-sub-item{
+	color: rgb(138, 164, 175);
+	padding: 5px 5px 5px 15px;
+	font-weight: 500;
+}
+
+.info-box-smaller{
+    height: 30px;
+    width: 75px;
+    line-height: 30px;
+    min-height: 30px;
+    font-size: 12px;
+    font-weight: bold;
+    color: #ffffff;
+}
+
+.btn-filter-analyze{
+    margin: 20px 0px 0px !important;
+    width: 100%;
+    font-weight: bold;
+    font-size: 18px;
+    overflow: hidden;
+    text-overflow: clip;
+}
+
+.modal-header-info {
+    background-color: rgb(51, 122, 183);
+    color: white;
+}
+
+.modal-open .modal {
+  padding-left: 0px !important;
+  padding-right: 0px !important;
+  overflow-y: scroll;
+}
+
+.box-analyzer-item {
+    background-color: rgba(233, 234, 236, 0.54) !important;
+    border-color: #0073B7 !important;
+    border-top: 3px solid #D2D6DE;
+    box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.1);
+    position: relative;
+    border-radius: 0px;
+    min-height: 170px;
+}
+
+.btn-span-tool {
+    padding: 0px;
+    font-size: 10px;
+    background: transparent;
+    box-shadow: none!important;
+    color: #ffffff;
+}
+
+.btn-confirm-analyze-debt {
+    width: 100%;
+    font-weight: bold;
+}
+
+.span-analyze-debt {
+    font-size: 12px;
+    border-radius: 0px;
+}
+
+.span-analyze-indicator {
+    font-size: 9px;
+    border-radius: 0px;
+    white-space: normal;
+}
+
+.span-management-debt {
+    font-size: 10px;
+}
+
+.info-box-metric {
+    min-height: 20px;
+    width: 100px;
+    margin-bottom: 5px;
+    background-color: rgb(193, 193, 197);
+}
+
+.info-box-metric-icon {
+    width: 50px;
+    font-size: 20px;
+    line-height: 18px;
+    height: 20px;
+}
+
+.info-box-metric-number {
+    line-height: 18px;
+    text-align: center;
+}
+
+.box-metric-header {
+    color: #464648;
+    padding: 15px;
+}
+
+.sb-inner-evolution {
+    height: 70px;
+}
+
+.sb-footer-evolution {
+    font-size: 18px;
+    color: white!important;
+}
+
+.sb-number {
+    font-size: 35px !important;
+    padding-top: 10px !important;
+}
+
+.board-management {
+  -webkit-transform: translate(0, 0);
+  -ms-transform: translate(0, 0);
+  -o-transform: translate(0, 0);
+  transform: translate(0, 0);
+  max-height: 400px;
+  overflow: auto;
+  overflow-x: hidden;
+}
+
+.bg-code-debt {
+    background-color: #1B93A7!important;
+}
+
+.bg-design-debt {
+    background-color: #91A28B!important;
+}
+
+.bg-defect-debt {
+    background-color: #dd3939!important;
+}
+
+.bg-test-debt {
+    background-color: #f39c12!important;
+}
+
+.bg-requirement-debt {
+    background-color: #8a6d3b!important;
+}
+
+.span-pay {
+    background-color: #00A65A !important;
+    padding: 0.2em 1.0em 0.3em;
+    margin-top: 5px;
+    cursor: pointer;
+}
+
+.span-counter {
+    background-color: #FC5353 !important;
+    border-radius: 15px;
+    padding: 0.1em 1em;
+    margin-left: 5px;
+    font-size: 12px;
+}
+
+.ul-timeline {
+    padding-top: 10px;
+    padding-left: 20px;
+    list-style: none;
+}
+
+.icon-timeline {
+    padding: 10px;
+    border-radius: 100%;
+    font-size: 10px;
+}
+
+.timeline-content {
+    max-width: 450px; 
+    margin-left: 15%;
+}
+
+.modal-footer-timeline {
+    background-color: rgb(51, 122, 183);
+}
+
+.btn-footer-timeline {
+    width: 100%;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.version-timeline {
+    text-align: center;
+    min-width: 62px;
+    font-size: 16px;
+}
+
+.timeline-item {
+    /*background-color: rgba(242, 242, 242, 0.89);*/
+    margin-left: 30px;
+    padding: 0px 200px 8px 10px;
+}
+
+.highcharts-container{
+    width:100% !important;
+    height:100% !important;
+}
+
+.input-indicator {
+    height: 25px;
+    font-size: 12px;
+    width: 60%;
+}
+
+.label-indicator {
+    color: rgb(197, 197, 197); 
+    font-weight: inherit;
+    width: 35px;
+}
+
+.btn-miner {
+    margin: 7px 14px 7px 7px; 
+    font-weight: bold;
+}
