@@ -1,4 +1,4 @@
-import { Component, Input }  from '@angular/core';
+import { Component, Input, Output, EventEmitter }  from '@angular/core';
 
 @Component({
     selector: 'kanban-board',
@@ -8,6 +8,11 @@ import { Component, Input }  from '@angular/core';
 export class KanbanBoardComponent {
     @Input() tdItems: any;
     @Input() title: string;
+    @Output() uploaded:EventEmitter<string> = new EventEmitter();
 
     constructor() {}
+
+    boardItemEvent(event) {
+        this.uploaded.emit(event);
+    }
 }

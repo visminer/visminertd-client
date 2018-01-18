@@ -4,7 +4,6 @@ import { Reference } from '../shared/models/Reference';
 
 import { VisminerService } from '../shared/services/visminer.service';
 import { TDManagementService } from './tdmanagement.service';
-import { TDReport } from '../shared/models/TDReport';
 import { TDItem } from '../shared/models/TDItem';
 import { debounce } from 'rxjs/operators/debounce';
 
@@ -17,7 +16,7 @@ export class TDManagementComponent implements OnInit {
 
   repository: Repository; 
   references: Reference[]; 
-  tdReport: TDReport;
+  tdItems: TDItem[];
   todo: {
     code: TDItem[],
     design: TDItem[],
@@ -48,9 +47,9 @@ export class TDManagementComponent implements OnInit {
     this.initializeArrays();
     // TODO: Give the option to choose which ref to analyze
     if (this.repository) {
-      this.tdManagementServ.getTDReportByRepoAndRef(this.repository._id, 'master').subscribe(
+      this.tdManagementServ.getTDByRepoAndRef(this.repository._id, 'master').subscribe(
         data => {
-          this.tdReport = data[0];
+          this.tdItems = data;
           this.loadKanbanItems();
         }
       );
@@ -83,7 +82,7 @@ export class TDManagementComponent implements OnInit {
   }
 
   loadKanbanItems() {
-    this.tdReport.technicaldebt.forEach( tdItem => {
+    this.tdItems.forEach( tdItem => {
       tdItem.debts.forEach( debtObj => {
         switch (debtObj.name) {
           case "CODE_DEBT": {
@@ -134,5 +133,60 @@ export class TDManagementComponent implements OnInit {
         }
       });      
     });
+  }
+
+  kanbanBoardEvent(event) {
+    switch (event.debtName) {
+      case "CODE": {
+        if (event.action === 'pay') {
+          this.todo.code.splice(this.todo.code.indexOf(event.tdItem, 0), 1);
+          this.doing.code.push(event.tdItem);
+        } else if (event.action === 'paid') {
+          this.doing.code.splice(this.doing.code.indexOf(event.tdItem, 0), 1);
+          this.done.code.push(event.tdItem);
+        }
+        break;
+      }
+      case "DESIGN": {
+        if (event.action === 'pay') {
+          this.todo.design.splice(this.todo.design.indexOf(event.tdItem, 0), 1);
+          this.doing.design.push(event.tdItem);
+        } else if (event.action === 'paid') {
+          this.doing.design.splice(this.doing.design.indexOf(event.tdItem, 0), 1);
+          this.done.design.push(event.tdItem);
+        }
+        break;
+      }
+      case "DEFECT": {
+        if (event.action === 'pay') {
+          this.todo.defect.splice(this.todo.defect.indexOf(event.tdItem, 0), 1);
+          this.doing.defect.push(event.tdItem);
+        } else if (event.action === 'paid') {
+          this.doing.defect.splice(this.doing.defect.indexOf(event.tdItem, 0), 1);
+          this.done.defect.push(event.tdItem);
+        }
+        break;
+      }
+      case "TEST": {
+        if (event.action === 'pay') {
+          this.todo.test.splice(this.todo.test.indexOf(event.tdItem, 0), 1);
+          this.doing.test.push(event.tdItem);
+        } else if (event.action === 'paid') {
+          this.doing.test.splice(this.doing.test.indexOf(event.tdItem, 0), 1);
+          this.done.test.push(event.tdItem);
+        }
+        break;
+      }
+      case "REQUIREMENT": {
+        if (event.action === 'pay') {
+          this.todo.requirement.splice(this.todo.requirement.indexOf(event.tdItem, 0), 1);
+          this.doing.requirement.push(event.tdItem);
+        } else if (event.action === 'paid') {
+          this.doing.requirement.splice(this.doing.requirement.indexOf(event.tdItem, 0), 1);
+          this.done.requirement.push(event.tdItem);
+        }
+        break;
+      }
+    }
   }
 }

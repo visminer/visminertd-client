@@ -19,9 +19,9 @@
   
     <!-- Main content -->
     <section class="content" style="padding-top: 40px">
-      <kanban-board title="TO DO" [tdItems]="todo"></kanban-board>
-      <kanban-board title="DOING" [tdItems]="doing"></kanban-board>
-      <kanban-board title="DONE" [tdItems]="done"></kanban-board>
+      <kanban-board title="TO DO" [tdItems]="todo" (uploaded)="kanbanBoardEvent($event)"></kanban-board>
+      <kanban-board title="DOING" [tdItems]="doing" (uploaded)="kanbanBoardEvent($event)"></kanban-board>
+      <kanban-board title="DONE" [tdItems]="done" (uploaded)="kanbanBoardEvent($event)"></kanban-board>
     </section>
     <!-- /.content -->
   

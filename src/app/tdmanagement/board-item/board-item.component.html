@@ -6,10 +6,10 @@
     <span [ngClass]="'label bg-'+debtName+'-debt span-management-debt'">
         {{ debtName }}                     
     </span>
-    <span *ngIf="boardName === 'TO DO'" class="label span-pay pull-right" ng-click="updateDebtStatus(type, 'Code Debt', 2)">
+    <span *ngIf="boardName === 'TO DO'" class="label span-pay pull-right" (click)="payDebt(tdItem, debtName, 2)">
         <i class="fa fa-usd"></i> Pay                   
     </span>
-    <span *ngIf="boardName === 'DOING'"  class="label span-pay pull-right" ng-click="updateDebtStatus(type, 'Code Debt', 3)">
+    <span *ngIf="boardName === 'DOING'"  class="label span-pay pull-right" (click)="paidDebt(tdItem, debtName, 3)">
         <i class="fa fa-thumbs-o-up "></i> Paid                
     </span>
   </div>

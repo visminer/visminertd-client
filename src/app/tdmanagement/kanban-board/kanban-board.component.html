@@ -15,19 +15,19 @@
       <div class="board-management">
           <ul id="todo_sortable" class="products-list product-list-in-box">
             <li class="item" *ngFor="let tdItem of tdItems.code">
-                <board-item [boardName]="title" debtName="CODE" [tdItem]="tdItem"></board-item>
+                <board-item [boardName]="title" debtName="CODE" [tdItem]="tdItem" (uploaded)="boardItemEvent($event)"></board-item>
             </li>
             <li class="item" *ngFor="let tdItem of tdItems.design">
-                <board-item [boardName]="title" debtName="DESIGN" [tdItem]="tdItem"></board-item>
+                <board-item [boardName]="title" debtName="DESIGN" [tdItem]="tdItem" (uploaded)="boardItemEvent($event)"></board-item>
             </li>
             <li class="item" *ngFor="let tdItem of tdItems.defect">
-                <board-item [boardName]="title" debtName="DEFECT" [tdItem]="tdItem"></board-item>
+                <board-item [boardName]="title" debtName="DEFECT" [tdItem]="tdItem" (uploaded)="boardItemEvent($event)"></board-item>
             </li>
             <li class="item" *ngFor="let tdItem of tdItems.test">
-                <board-item [boardName]="title" debtName="TEST" [tdItem]="tdItem"></board-item>
+                <board-item [boardName]="title" debtName="TEST" [tdItem]="tdItem" (uploaded)="boardItemEvent($event)"></board-item>
             </li>
             <li class="item" *ngFor="let tdItem of tdItems.requirement">
-                <board-item [boardName]="title" debtName="REQUIREMENT" [tdItem]="tdItem"></board-item>
+                <board-item [boardName]="title" debtName="REQUIREMENT" [tdItem]="tdItem" (uploaded)="boardItemEvent($event)"></board-item>
             </li>
           </ul>
       </div>
