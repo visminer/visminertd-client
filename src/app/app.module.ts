@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
 import { ModalModule } from 'ngx-bootstrap/modal';
+import { SortablejsModule } from 'angular-sortablejs';
 
 import { VisminerService } from './shared/services/visminer.service';
 import { SidebarService } from './shared/components/sidebar/sidebar.service';
@@ -26,6 +27,7 @@ import { AlertModule } from './shared/components/alert/alert.module';
   ],
   imports: [
     ModalModule.forRoot(),
+    SortablejsModule.forRoot({ animation: 200 }),
     BrowserModule,
     HttpClientModule,
     FormsModule,

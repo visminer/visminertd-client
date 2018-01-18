@@ -1,4 +1,5 @@
 import { Component, Input, Output, EventEmitter }  from '@angular/core';
+import { TDItem } from '../../shared/models/TDItem';
 
 @Component({
     selector: 'kanban-board',
@@ -6,8 +7,9 @@ import { Component, Input, Output, EventEmitter }  from '@angular/core';
     styleUrls: ['./kanban-board.component.css']
 })
 export class KanbanBoardComponent {
-    @Input() tdItems: any;
+    @Input() tdItems: TDItem[];
     @Input() title: string;
+    @Input() count: number;
     @Output() uploaded:EventEmitter<string> = new EventEmitter();
 
     constructor() {}

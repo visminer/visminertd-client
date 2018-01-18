@@ -3,7 +3,7 @@
     <a href="" ng-click="showTdTimeline(type)" class="product-title">{{ substringFileName(tdItem.filename) }}</a>
   </div>
   <div>
-    <span [ngClass]="'label bg-'+debtName+'-debt span-management-debt'">
+    <span [ngClass]="'label bg-'+substringDebt(debtName)+'-debt span-management-debt'">
         {{ debtName }}                     
     </span>
     <span *ngIf="boardName === 'TO DO'" class="label span-pay pull-right" (click)="payDebt(tdItem, debtName, 2)">
