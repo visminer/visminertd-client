@@ -13,7 +13,7 @@
 
     <div class="box-body" style="padding: 0 10px 0 10px;">
       <div class="board-management">
-          <ul id="todo_sortable" class="products-list product-list-in-box">
+          <ul id="todo_sortable" [sortablejs]="tdItems" class="products-list product-list-in-box">
             <ng-container *ngFor="let tdItem of tdItems">
               <ng-container *ngFor="let debt of tdItem.debts">
                 <li class="item" *ngIf="(title === 'TO DO' && debt.value == 1) || (title === 'DOING' && debt.value == 2) || (title === 'DONE' && debt.value == 3)">
