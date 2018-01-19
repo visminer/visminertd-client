@@ -13,7 +13,7 @@ export class TDTimelineService {
   getFileDebtHistory(tdItem: TDItem): Observable<TDItem[]> {
     return this.http.get<TDItem[]>(
       `http://localhost:3000/api/technicaldebt/debt_history/repository/${tdItem.repository}/filehash/${tdItem.filehash}
-      /commit_date/${tdItem.commit_date.toString()}`)
+/commit_date/${tdItem.commit_date.toString()}`)
     .pipe(
       catchError(err => [])
     );

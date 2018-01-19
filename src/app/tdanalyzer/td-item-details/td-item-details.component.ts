@@ -11,9 +11,9 @@ import { TDItem } from './../../shared/models/TDItem';
 })
 export class TDItemDetailsComponent implements OnInit {
 
-  tdItem: TDItem;
+  tdItem = new TDItem();
   commit: string;
-  tabView = 'code_smells';
+  tabView = 'td_form';
 
   constructor(public bsModalRef: BsModalRef) { }
 

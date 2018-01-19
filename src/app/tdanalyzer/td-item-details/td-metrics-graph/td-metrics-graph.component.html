@@ -1,0 +1,24 @@
+<div class="row" style="padding: 10px;">
+  <div>
+    
+    <div class="form-group">
+      <label class="control-label">Classes</label>
+      <div>
+        <select class="form-control" [(ngModel)]="clazz" (change)="updateChart()">
+          <option *ngFor="let cls of allClasses" [value]="cls">{{cls}}</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="control-label">Metrics</label>
+      <div>
+        <select class="form-control" [(ngModel)]="metric" (change)="updateChart()">
+          <option *ngFor="let m of allMetrics" [value]="m">{{m}}</option>
+        </select>
+      </div>
+    </div>    
+
+  </div>
+  <chart id="chart" [options]="chart"></chart>
+</div>
