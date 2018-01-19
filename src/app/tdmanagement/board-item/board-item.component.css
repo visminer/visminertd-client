@@ -5,22 +5,22 @@
     cursor: pointer;
 }
 
-.bg-CODE-debt {
+.bg-code-debt {
     background-color: #1B93A7!important;
 }
 
-.bg-DESIGN-debt {
+.bg-design-debt {
     background-color: #91A28B!important;
 }
 
-.bg-DEFECT-debt {
+.bg-defect-debt {
     background-color: #dd3939!important;
 }
 
-.bg-TEST-debt {
+.bg-test-debt {
     background-color: #f39c12!important;
 }
 
-.bg-REQUIREMENT-debt {
+.bg-requirement-debt {
     background-color: #8a6d3b!important;
 }

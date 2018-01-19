@@ -40,5 +40,9 @@ export class BoardItemComponent {
 
     substringFileName(fileName) {
 		return fileName.substring(fileName.lastIndexOf("/") + 1, fileName.lastIndexOf(".java"));
-	}
+    }
+    
+    substringDebt(debtName) {
+        return debtName.substring(0, debtName.lastIndexOf("_")).toLowerCase();
+    }
 }

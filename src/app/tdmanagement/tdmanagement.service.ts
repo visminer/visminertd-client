@@ -24,7 +24,7 @@ export class TDManagementService {
 
   payDebt(_id: string, debt: string, value: number): Observable<any> {
     return this.http.put<any>(`http://localhost:3000/api/technicaldebt/paydebt`,
-    { _id: _id, debt: debt.concat('_DEBT'), value: value },
+    { _id: _id, debt: debt, value: value },
     DEFAULT_HEADER)
     .pipe(
       catchError(err => null)
@@ -33,7 +33,7 @@ export class TDManagementService {
 
   paidDebt(_id: string, debt: string, value: number): Observable<any> {
     return this.http.put<any>(`http://localhost:3000/api/technicaldebt/paiddebt`,
-    { _id: _id, debt: debt.concat('_DEBT'), value: value },
+    { _id: _id, debt: debt, value: value },
     DEFAULT_HEADER)
     .pipe(
       catchError(err => null)
