@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, IterableDiffers, DoCheck, Input } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 
 import { Repository } from '../shared/models/Repository';
@@ -19,8 +19,9 @@ import { ChartComponent } from 'angular2-highcharts';
 })
 export class TDEvolutionComponent implements OnInit {
   repository: Repository; 
-  references: Reference[]; 
+  @Input() references: Reference[]; 
   referenceNames: string[];
+  differ: any;
 
   sliderRange: number[];  
   sliderConfig: any;
@@ -34,7 +35,9 @@ export class TDEvolutionComponent implements OnInit {
     debtsTotal: number[],
   }
 
-  constructor(private tdEvolutionServ: TDEvolutionService, private visminerServ: VisminerService) { }
+  constructor(private tdEvolutionServ: TDEvolutionService, private visminerServ: VisminerService, differs: IterableDiffers) {
+    this.differ = differs.find([]).create(null);
+  }
 
   ngOnInit() {
     this.repository = this.visminerServ.repository;
@@ -62,6 +65,15 @@ export class TDEvolutionComponent implements OnInit {
       );
     }  
   }
+
+  ngDoCheck() {
+    let change = this.differ.diff(this.references);
+    if (change) {
+      if (this.sliderRange[1] > this.references.length - 1)
+        this.sliderRange[1] = this.references.length - 1;
+      this.loadChart();
+    }
+  }  
 
   loadSlider() {
     var self = this;
@@ -151,14 +163,16 @@ export class TDEvolutionComponent implements OnInit {
       this.referenceNames.push(this.references[i].name);
       let report: TDReport = this.getReport(this.references[i].name);
 
-      let tdItens: TDItem[]  = report.technicaldebt;
-      chartCodeDebtSeries.push(this.getTotalOfDebtsByType(tdItens, "CODE_DEBT"));
-      chartDesignDebtSeries.push(this.getTotalOfDebtsByType(tdItens, "DESIGN_DEBT"));
-      chartDefectDebtSeries.push(this.getTotalOfDebtsByType(tdItens, "DEFECT_DEBT"));
-      chartTestDebtSeries.push(this.getTotalOfDebtsByType(tdItens, "TEST_DEBT"));
-      chartRequirementDebtSeries.push(this.getTotalOfDebtsByType(tdItens, "REQUIREMENT_DEBT"));
-      
-      this.tdBoxes.indicatorsTotal.push(this.getTotalOfIndicators(tdItens));
+      if (report) {
+        let tdItens: TDItem[]  = report.technicaldebt;
+        chartCodeDebtSeries.push(this.getTotalOfDebtsByType(tdItens, "CODE_DEBT"));
+        chartDesignDebtSeries.push(this.getTotalOfDebtsByType(tdItens, "DESIGN_DEBT"));
+        chartDefectDebtSeries.push(this.getTotalOfDebtsByType(tdItens, "DEFECT_DEBT"));
+        chartTestDebtSeries.push(this.getTotalOfDebtsByType(tdItens, "TEST_DEBT"));
+        chartRequirementDebtSeries.push(this.getTotalOfDebtsByType(tdItens, "REQUIREMENT_DEBT"));
+        
+        this.tdBoxes.indicatorsTotal.push(this.getTotalOfIndicators(tdItens));
+      }  
     }
     
     this.referenceNames.forEach((ref, index) => {
