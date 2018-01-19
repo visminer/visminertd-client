@@ -1,4 +1,8 @@
 /* You can add global styles to this file, and also import other style files */
+.content {
+    min-height: 100vh !important;
+}
+
 .gray-medium {
     color: #d2d6de;
 }
