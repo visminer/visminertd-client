@@ -15,6 +15,7 @@ import { TDTimelineComponent } from './td-item-details/td-timeline/td-timeline.c
 import { PipesModule } from './../shared/pipes/pipes.module';
 import { TDMetricsGraphComponent } from './td-item-details/td-metrics-graph/td-metrics-graph.component';
 import { TDMetricsGraphService } from './td-item-details/td-metrics-graph/td-metrics-graph.service';
+import { AlertModule } from '../shared/components/alert/alert.module';
 
 declare var require: any;
 export function highchartsFactory() {
@@ -26,7 +27,8 @@ export function highchartsFactory() {
     CommonModule,
     FormsModule,
     PipesModule,
-    ChartModule
+    ChartModule,
+    AlertModule
   ],
   declarations: [
     TDAnalyzerComponent,
