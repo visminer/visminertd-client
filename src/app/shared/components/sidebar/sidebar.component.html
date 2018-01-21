@@ -21,10 +21,10 @@
       <li class="treeview">
         <a href="#">
           <i class="fa fa-database"></i> <span>Repositories</span>
-          <small class="label pull-right bg-green">{{(repositories$ | async)?.length}}</small>
+          <small class="label pull-right bg-green">{{repositories?.length}}</small>
         </a>
         <ul class="treeview-menu">
-          <li *ngFor="let repository of repositories$ | async">
+          <li *ngFor="let repository of repositories">
             <a href="javascript:void(0)" (click)="setRepository(repository)">
               {{repository.name}}
             </a>
@@ -34,10 +34,10 @@
       <li class="treeview">
         <a href="#">
           <i class="glyphicon glyphicon-tags"></i> <span>Versions</span>
-          <small class="label pull-right bg-green">{{(references$ | async)?.length}}</small>
+          <small class="label pull-right bg-green">{{references?.length}}</small>
         </a>
         <ul class="treeview-menu">
-          <li *ngFor="let reference of references$ | async">
+          <li *ngFor="let reference of references">
             <label class="control-sidebar-subheading filter-version-sub-item">
               <input type="checkbox" (change)="addReference(reference)">
               <span class="gray-medium">{{reference.name}}</span>

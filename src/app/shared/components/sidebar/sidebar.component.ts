@@ -1,6 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Subscription } from 'rxjs/Subscription';
-import { Observable } from 'rxjs/Observable';
 
 import { SidebarService } from './sidebar.service';
 import { VisminerService } from '../../services/visminer.service';
@@ -14,20 +12,20 @@ import { Reference } from '../../models/Reference';
 })
 export class SidebarComponent implements OnInit {
 
-  repositories$: Observable<Repository[]>;
-  references$: Observable<Reference[]>;
+  repositories: Repository[];
+  references: Reference[];
 
   refs: Reference[] = [];
 
   constructor(private sidebarServ: SidebarService, private visminerServ: VisminerService) { }
 
   ngOnInit() {
-    this.repositories$ = this.sidebarServ.getRepositories();
+    this.sidebarServ.getRepositories().subscribe(result => this.repositories = result);
   }
 
   setRepository(repository: Repository): void {
     this.visminerServ.repository = repository;
-    this.references$ = this.sidebarServ.getReferences(repository._id);
+    this.sidebarServ.getReferences(repository._id).subscribe(result => this.references = result);
   }
 
   addReference(reference: Reference): void {
