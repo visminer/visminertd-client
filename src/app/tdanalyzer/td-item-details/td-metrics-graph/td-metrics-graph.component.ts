@@ -58,8 +58,8 @@ export class TDMetricsGraphComponent implements OnInit {
         if (tmpCls.name === this.clazz) {
           this.versions.push(analysis.reference);
           for (let y = 0; y < tmpCls.metrics.length; y++) {
-            if (tmpCls.metrics[i].name === this.metric) {
-              this.metricValues.push(tmpCls.metrics[i].value);
+            if (tmpCls.metrics[y].name === this.metric) {
+              this.metricValues.push(tmpCls.metrics[y].value);
               break;
             }
           }
@@ -69,8 +69,6 @@ export class TDMetricsGraphComponent implements OnInit {
     });
 
     this.drawChart();
-    console.log(this.versions);
-    console.log(this.metricValues);
   }
 
   private drawChart() {
@@ -78,39 +76,48 @@ export class TDMetricsGraphComponent implements OnInit {
       title: {
         text: 'Metrics Evolution'
       },
+
       subtitle: {
-        text: this.metric
+        text: this.clazz
       },
+
+      yAxis: {
+        title: {
+          text: 'Metric Values'
+        }
+      },
+
       xAxis: {
         title: {
           text: 'Versions'
         },
         categories: this.versions
       },
-      yAxis: {
-        min: 0,
-        title: {
-          text: 'Metrics Values'
-        },
-        stackLabels: {
-          enabled: true,
-          style: {
-            fontWeight: 'bold'
-          }
-        }
+
+      legend: {
+        layout: 'vertical',
+        align: 'right',
+        verticalAlign: 'middle'
       },
-      credits: {
-        enabled: false
-      },
-      options: {
-        chart: {
-          type: 'line',
-          zoomType: 'x'
-        }
-      },
-      series: {
-        type: 'line',
+
+      series: [{
+        name: this.metric,
         data: this.metricValues
+      }],
+
+      responsive: {
+        rules: [{
+          condition: {
+            maxWidth: 800
+          },
+          chartOptions: {
+            legend: {
+              layout: 'horizontal',
+              align: 'center',
+              verticalAlign: 'bottom'
+            }
+          }
+        }]
       }
     };
   }
