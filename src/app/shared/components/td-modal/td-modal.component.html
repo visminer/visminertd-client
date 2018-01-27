@@ -12,8 +12,8 @@
 
       <ul class="nav nav-tabs">
         <li><button class="btn btn-link" [class.tab-active]="tabView === 'td_form'" (click)="updateView('td_form')">TD Form</button></li>
-        <li><button class="btn btn-link" [class.tab-active]="tabView === 'td_timeline'" (click)="updateView('td_timeline')">Timeline</button></li>
-        <li><button class="btn btn-link" [class.tab-active]="tabView === 'td_metrics_graph'" (click)="updateView('td_metrics_graph')">Metrics</button></li>
+        <li><button class="btn btn-link" [class.tab-active]="tabView === 'td_timeline'" (click)="updateView('td_timeline')">TD Timeline</button></li>
+        <li><button class="btn btn-link" [class.tab-active]="tabView === 'td_metrics_graph'" (click)="updateView('td_metrics_graph')">Metrics Graph</button></li>
       </ul>
 
       <div [ngSwitch]="tabView">

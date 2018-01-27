@@ -3,8 +3,8 @@ import { Observable } from 'rxjs/Observable';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
-import { CodeAnalysis } from './../../../shared/models/CodeAnalysis';
-import { TDItem } from './../../../shared/models/TDItem';
+import { CodeAnalysis } from './../../../models/CodeAnalysis';
+import { TDItem } from './../../../models/TDItem';
 
 @Injectable()
 export class TDMetricsGraphService {

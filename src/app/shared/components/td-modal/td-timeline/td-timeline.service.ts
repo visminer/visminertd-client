@@ -3,7 +3,7 @@ import { Observable } from 'rxjs/Observable';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
-import { TDItem } from './../../../shared/models/TDItem';
+import { TDItem } from './../../../models/TDItem';
 
 @Injectable()
 export class TDTimelineService {

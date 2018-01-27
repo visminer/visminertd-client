@@ -3,7 +3,7 @@ import { Observable } from 'rxjs/Observable';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
-import { TDItem } from './../../../shared/models/TDItem';
+import { TDItem } from './../../../models/TDItem';
 
 const DEFAULT_HEADER = { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) };
 

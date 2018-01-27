@@ -2,14 +2,14 @@ import { Component, OnInit } from '@angular/core';
 
 import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
 
-import { TDItem } from './../../shared/models/TDItem';
+import { TDItem } from './../../models/TDItem';
 
 @Component({
-  selector: 'app-td-item-details',
-  templateUrl: './td-item-details.component.html',
-  styleUrls: ['./td-item-details.component.css']
+  selector: 'app-td-modal',
+  templateUrl: './td-modal.component.html',
+  styleUrls: ['./td-modal.component.css']
 })
-export class TDItemDetailsComponent implements OnInit {
+export class TDModalComponent implements OnInit {
 
   tdItem = new TDItem();
   commit: string;

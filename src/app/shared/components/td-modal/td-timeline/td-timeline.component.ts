@@ -2,8 +2,8 @@ import { Observable } from 'rxjs/Observable';
 import { Component, OnInit, Input } from '@angular/core';
 
 import { TDTimelineService } from './td-timeline.service';
-import { VisminerService } from './../../../shared/services/visminer.service';
-import { TDItem } from './../../../shared/models/TDItem';
+import { VisminerService } from './../../../services/visminer.service';
+import { TDItem } from './../../../models/TDItem';
 
 @Component({
   selector: 'app-td-timeline',

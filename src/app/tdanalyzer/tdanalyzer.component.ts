@@ -4,9 +4,9 @@ import { Component, OnInit } from '@angular/core';
 import { BsModalService } from 'ngx-bootstrap/modal';
 import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
 
+import { TDModalComponent } from './../shared/components/td-modal/td-modal.component';
 import { VisminerService } from '../shared/services/visminer.service';
 import { TDAnalyzerService } from './tdanalyzer.service';
-import { TDItemDetailsComponent } from './td-item-details/td-item-details.component';
 import { Reference } from './../shared/models/Reference';
 import { Repository } from './../shared/models/Repository';
 import { TDItem, TDItemDebt } from './../shared/models/TDItem';
@@ -34,7 +34,7 @@ export class TDAnalyzerComponent implements OnInit {
   }
 
   showDetails(file: TDItem) {
-    this.itemDetailsModal = this.modalService.show(TDItemDetailsComponent);
+    this.itemDetailsModal = this.modalService.show(TDModalComponent);
     this.itemDetailsModal.content.tdItem = file;
     this.itemDetailsModal.content.commit = this.selectedReference.commits[0];
   }

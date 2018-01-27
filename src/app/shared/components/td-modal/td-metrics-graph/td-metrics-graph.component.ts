@@ -1,9 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
 
 import { TDMetricsGraphService } from './td-metrics-graph.service';
-import { TDItem } from './../../../shared/models/TDItem';
-import { CodeAnalysis } from '../../../shared/models/CodeAnalysis';
-import { version } from 'moment';
+import { CodeAnalysis } from './../../../models/CodeAnalysis';
+import { TDItem } from './../../../models/TDItem';
 
 @Component({
   selector: 'app-td-metrics-graph',
