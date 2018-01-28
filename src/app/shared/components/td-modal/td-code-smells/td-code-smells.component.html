@@ -1,0 +1,90 @@
+<div *ngIf="!classes.length; then thenBlock else elseBlock"></div>
+
+<ng-template #thenBlock>
+  <div class="row" style="padding: 10px;">
+    <div class="box box-solid box-success">
+      <div class="box-header">
+        <h3 class="box-title">No Code Smells found.</h3>
+      </div>
+
+      <div class="box-body">
+        This file has no problems associated with the supported Code Smells.
+      </div>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #elseBlock>
+  <div class="row" style="padding: 10px;" *ngIf="classes.length">
+
+    <div class="form-group row">
+      <label class="col-sm-12 col-form-label">Select a class</label>
+      <div class="col-sm-12">
+        <select class="form-control" name="classes_smells" [(ngModel)]="selectedClass" (change)="updateSelectedMethod()">
+          <option *ngFor="let clz of classes" [ngValue]="clz">{{clz.name}}</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="box-metric" *ngFor="let smell of selectedClass.codesmells">
+      <div class="row box-metric-header">
+        <b>{{smell | removeChar}}</b>
+      </div>
+      <div class="row">
+
+        <div class="col-md-3 col-sm-6 col-xs-12" *ngIf="smell === 'BRAIN_CLASS'">
+          <div>
+            <div class="info-box-metric-icon bg-aqua">BRAIN METHOD</div>
+            <div class="info-box-metric-number bg-gray">{{getBrainMethodQtd()}}</div>
+          </div>
+        </div>
+
+        <div class="col-md-3 col-sm-6 col-xs-12" *ngFor="let metric of getCodeMetrics(smell, selectedClass.metrics)">
+          <div>
+            <div class="info-box-metric-icon" [ngClass]="{
+            'bg-aqua': currentBoxesColors[metric.name] == 'bg-aqua',
+            'bg-green': currentBoxesColors[metric.name] == 'bg-green',
+            'bg-yellow': currentBoxesColors[metric.name] == 'bg-yellow',
+            'bg-red': currentBoxesColors[metric.name] == 'bg-red'
+          }">{{metric.name}}</div>
+            <div class="info-box-metric-number bg-gray">{{metric.value}}</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="form-group row" style="margin-top: 30px;">
+      <label class="col-sm-12 col-form-label">Select a method</label>
+      <div class="col-sm-12">
+        <select class="form-control" name="methods" [(ngModel)]="selectedMethod">
+          <option *ngFor="let m of selectedClass.methods" [ngValue]="m">{{m.name}}</option>
+        </select>
+      </div>
+    </div>
+
+    <div *ngIf="selectedMethod">
+      <div class="box-metric" *ngFor="let smell of selectedMethod.codesmells">
+        <div class="row box-metric-header">
+          <b>{{smell | removeChar}}</b>
+        </div>
+        <div class="row">
+
+          <div class="col-md-3 col-sm-6 col-xs-12" *ngFor="let metric of getCodeMetrics(smell, selectedMethod.metrics)">
+            <div>
+              <div class="info-box-metric-icon" [ngClass]="{
+            'bg-aqua': currentBoxesColors[metric.name] == 'bg-aqua',
+            'bg-green': currentBoxesColors[metric.name] == 'bg-green',
+            'bg-yellow': currentBoxesColors[metric.name] == 'bg-yellow',
+            'bg-red': currentBoxesColors[metric.name] == 'bg-red'
+          }">{{metric.name}}</div>
+              <div class="info-box-metric-number bg-gray">{{metric.value}}</div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+</ng-template>

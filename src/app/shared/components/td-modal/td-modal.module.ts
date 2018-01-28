@@ -13,6 +13,8 @@ import { TDModalComponent } from './td-modal.component';
 import { TDFormService } from './td-form/td-form.service';
 import { TDMetricsGraphService } from './td-metrics-graph/td-metrics-graph.service';
 import { TDTimelineService } from './td-timeline/td-timeline.service';
+import { TDCodeSmellsComponent } from './td-code-smells/td-code-smells.component';
+import { TDCodeSmellsService } from './td-code-smells/td-code-smells.service';
 
 declare var require: any;
 export function highchartsFactory() {
@@ -30,7 +32,8 @@ export function highchartsFactory() {
     TDFormComponent,
     TDMetricsGraphComponent,
     TDTimelineComponent,
-    TDModalComponent
+    TDModalComponent,
+    TDCodeSmellsComponent
   ],
   providers: [
     {
@@ -39,7 +42,8 @@ export function highchartsFactory() {
     },
     TDFormService,
     TDMetricsGraphService,
-    TDTimelineService
+    TDTimelineService,
+    TDCodeSmellsService
   ],
   exports: [
     TDModalComponent
