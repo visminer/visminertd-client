@@ -1,8 +1,13 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
-import { TDItem } from '../../shared/models/TDItem';
+
+import { BsModalService } from 'ngx-bootstrap/modal';
+import { BsModalRef } from 'ngx-bootstrap/modal';
+import { denodeify } from 'q';
+
 import { TDManagementService } from '../tdmanagement.service';
 import { TDManagementComponent } from '../tdmanagement.component';
-import { denodeify } from 'q';
+import { TDModalComponent } from '../../shared/components/td-modal/td-modal.component';
+import { TDItem } from '../../shared/models/TDItem';
 
 @Component({
     selector: 'board-item',
@@ -16,7 +21,9 @@ export class BoardItemComponent {
     @Input() boardName: string;
     @Output() uploaded:EventEmitter<any> = new EventEmitter();
 
-    constructor(private tdManagementServ: TDManagementService) {}
+    itemDetailsModal: BsModalRef;
+
+    constructor(private tdManagementServ: TDManagementService, private modalService: BsModalService) {}
 
     payDebt(tdItem, debtName) {
         this.tdManagementServ.payDebt(tdItem._id, debtName, 2).subscribe(r => console.log(r));
@@ -44,5 +51,11 @@ export class BoardItemComponent {
     
     substringDebt(debtName) {
         return debtName.substring(0, debtName.lastIndexOf("_")).toLowerCase();
+    }
+
+    showDetails(file: TDItem) {
+        this.itemDetailsModal = this.modalService.show(TDModalComponent);
+        this.itemDetailsModal.content.tdItem = file;
+        this.itemDetailsModal.content.commit = file.commit;
     }
 }

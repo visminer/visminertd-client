@@ -1,6 +1,6 @@
 <div>
   <div>
-    <a href="" ng-click="showTdTimeline(type)" class="product-title">{{ substringFileName(tdItem.filename) }}</a>
+    <a class="product-title" (click)="showDetails(tdItem)">{{ substringFileName(tdItem.filename) }}</a>
   </div>
   <div>
     <span [ngClass]="'label bg-'+substringDebt(debtName)+'-debt span-management-debt'">
