@@ -37,7 +37,7 @@ export class TDCodeSmellsComponent implements OnInit {
       this.filterCodeSmells();
 
       this.selectedClass = this.classes[0] || new Clazz();
-      this.selectedMethod = this.selectedClass.methods[0];
+      this.selectedMethod = this.selectedClass.methods ? this.selectedClass.methods[0] : null;
     });
   }
 

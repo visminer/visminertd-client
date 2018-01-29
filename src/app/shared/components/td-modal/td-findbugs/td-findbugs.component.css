@@ -1,0 +1,10 @@
+.findbugs-container {
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+}
+
+.findbugs-message {
+    text-align: justify;
+    text-justify: inter-word;
+}

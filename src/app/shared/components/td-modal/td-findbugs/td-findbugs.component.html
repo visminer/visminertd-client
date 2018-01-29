@@ -1,0 +1,58 @@
+<div *ngIf="!bugs; then thenBlock else elseBlock"></div>
+
+<ng-template #thenBlock>
+  <div class="row" style="padding: 10px;">
+    <div class="box box-solid box-success">
+      <div class="box-header">
+        <h3 class="box-title">No bugs.</h3>
+      </div>
+
+      <div class="box-body">
+        FindBugs did not find problems in this file.
+      </div>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #elseBlock>
+  <div class="row" style="padding: 10px;">
+
+    <div class="box-body">
+
+      <ul class="list-group">
+        <li class="list-group-item" *ngFor="let bug of bugs">
+          <div class="findbugs-container">
+            <div>
+              <b>Class:</b> {{bug.class}}</div>
+            <div>
+              <b>Field:</b> {{bug.field}}</div>
+            <div>
+              <b>Method:</b> {{bug.method}}</div>
+            <div>
+              <b>Local Variable:</b> {{bug.local_variable}}</div>
+          </div>
+          <br>
+          <div class="findbugs-container">
+            <div>
+              <b>Rank:</b> {{bug.rank_category}}</div>
+            <div>
+              <b>Priority:</b> {{bug.priority_category}}</div>
+            <div>
+              <b>Type:</b> {{bug.type}}</div>
+            <div>
+              <b>Category:</b> {{bug.category}}</div>
+          </div>
+          <br>
+          <p class="findbugs-message">
+            <b>Description:</b> {{bug.description}}
+          </p>
+
+          <p class="findbugs-message">
+            <b>Message:</b> {{bug.short_message}}.
+          </p>
+        </li>
+      </ul>
+
+    </div>
+  </div>
+</ng-template>

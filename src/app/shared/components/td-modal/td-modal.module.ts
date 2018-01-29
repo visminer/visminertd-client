@@ -15,6 +15,8 @@ import { TDMetricsGraphService } from './td-metrics-graph/td-metrics-graph.servi
 import { TDTimelineService } from './td-timeline/td-timeline.service';
 import { TDCodeSmellsComponent } from './td-code-smells/td-code-smells.component';
 import { TDCodeSmellsService } from './td-code-smells/td-code-smells.service';
+import { TDFindbugsComponent } from './td-findbugs/td-findbugs.component';
+import { TDFindbugsService } from './td-findbugs/td-findbugs.service';
 
 declare var require: any;
 export function highchartsFactory() {
@@ -33,7 +35,8 @@ export function highchartsFactory() {
     TDMetricsGraphComponent,
     TDTimelineComponent,
     TDModalComponent,
-    TDCodeSmellsComponent
+    TDCodeSmellsComponent,
+    TDFindbugsComponent
   ],
   providers: [
     {
@@ -43,7 +46,8 @@ export function highchartsFactory() {
     TDFormService,
     TDMetricsGraphService,
     TDTimelineService,
-    TDCodeSmellsService
+    TDCodeSmellsService,
+    TDFindbugsService
   ],
   exports: [
     TDModalComponent

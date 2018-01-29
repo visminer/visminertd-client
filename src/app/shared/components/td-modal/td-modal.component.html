@@ -23,6 +23,9 @@
         <li>
           <button class="btn btn-link" [class.tab-active]="tabView === 'td_code_smells'" (click)="updateView('td_code_smells')">Code Smells</button>
         </li>
+        <li>
+          <button class="btn btn-link" [class.tab-active]="tabView === 'td_find_bugs'" (click)="updateView('td_find_bugs')">Find Bugs</button>
+        </li>
       </ul>
 
       <div [ngSwitch]="tabView">
@@ -30,6 +33,7 @@
         <app-td-timeline *ngSwitchCase="'td_timeline'" [tdItem]="tdItem"></app-td-timeline>
         <app-td-metrics-graph *ngSwitchCase="'td_metrics_graph'" [tdItem]="tdItem"></app-td-metrics-graph>
         <app-td-code-smells *ngSwitchCase="'td_code_smells'" [tdItem]="tdItem"></app-td-code-smells>
+        <app-td-findbugs *ngSwitchCase="'td_find_bugs'" [tdItem]="tdItem"></app-td-findbugs>
       </div>
 
     </div>
