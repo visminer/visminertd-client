@@ -1,4 +1,4 @@
-<div *ngIf="!bugs; then thenBlock else elseBlock"></div>
+<div *ngIf="!bugs.length; then thenBlock else elseBlock"></div>
 
 <ng-template #thenBlock>
   <div class="row" style="padding: 10px;">

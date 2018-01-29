@@ -1,0 +1,39 @@
+<div *ngIf="!styleProblems.length; then thenBlock else elseBlock"></div>
+
+<ng-template #thenBlock>
+  <div class="row" style="padding: 10px;">
+    <div class="box box-solid box-success">
+      <div class="box-header">
+        <h3 class="box-title">No style problems.</h3>
+      </div>
+
+      <div class="box-body">
+        CheckStyle did not find problems in this file.
+      </div>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #elseBlock>
+  <div class="row" style="padding: 10px;">
+
+    <ul class="list-group">
+      <li class="list-group-item" *ngFor="let problem of styleProblems">
+        <div class="fields-container">
+          <div>
+            <b>Line:</b> {{problem.line}}</div>
+          <div>
+            <b>Column:</b> {{problem.column}}</div>
+          <div>
+            <b>Severity:</b> {{problem.severity}}</div>
+          <div>
+            <b>Checker:</b> {{problem.checker}}</div>
+        </div>
+        <p class="message-container">
+          <b>Message:</b> {{problem.message}}
+        </p>
+      </li>
+    </ul>
+
+  </div>
+</ng-template>

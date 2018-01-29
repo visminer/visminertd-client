@@ -18,7 +18,7 @@ export class TDFindbugsComponent implements OnInit {
 
   ngOnInit() {
     this.service.getBugs(this.tdItem.commit, this.tdItem.filehash).subscribe(res => {
-      this.bugs = res.bugs;
+      this.bugs = res ? res.bugs : [];
     });
   }
 

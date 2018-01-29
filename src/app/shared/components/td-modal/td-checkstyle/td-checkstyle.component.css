@@ -1,0 +1,10 @@
+.fields-container {
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+}
+
+.message-container {
+    text-align: justify;
+    text-justify: inter-word;
+}

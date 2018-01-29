@@ -1,4 +1,5 @@
 export class Bug {
+
     rank: number;
     rank_category: string;
     priority: number;
@@ -13,9 +14,11 @@ export class Bug {
     local_variable: string;
     short_message: string;
     long_message: string;
+
 }
 
 export class FindBugs {
+
     _id: string;
     reference: string;
     commit: string;
