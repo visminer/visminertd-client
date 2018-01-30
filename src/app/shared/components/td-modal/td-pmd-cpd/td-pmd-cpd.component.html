@@ -1,0 +1,46 @@
+<div *ngIf="!duplications.length; then thenBlock else elseBlock"></div>
+
+<ng-template #thenBlock>
+    <div class="row" style="padding: 10px;">
+        <div class="box box-solid box-success">
+            <div class="box-header">
+                <h3 class="box-title">No duplications.</h3>
+            </div>
+
+            <div class="box-body">
+                CPD did not find duplications envolving this file.
+            </div>
+        </div>
+    </div>
+</ng-template>
+
+<ng-template #elseBlock>
+    <div class="row" style="padding: 10px;">
+        <h4>Total Duplication: {{totalDuplication}}</h4>
+        <h4>Duplication Occurrences</h4>
+
+        <div class="box box-primary" *ngFor="let duplication of duplications">
+            <div class="box-header with-border even-spaced-text-container">
+                <span class="box-title">Tokens Threshold: {{duplication.tokens_threshold}}</span>
+                <span class="box-title">Token Count: {{duplication.token_count}}</span>
+                <span class="box-title">Language: {{duplication.language}}</span>
+                <span class="box-title">Occurrences: {{duplication.occurrences.length}}</span>
+            </div>
+            
+            <div class="box-body">
+                <ul class="list-group">
+                    <li class="list-group-item" *ngFor="let occurrence of duplication.occurrences">
+                        <b>Filename:</b> {{occurrence.filename}}
+                        <br>
+                        <div class="even-spaced-text-container">
+                            <div><b>Begin Line:</b> {{occurrence.begin_line}}</div>
+                            <div><b>End Line:</b> {{occurrence.begin_line + occurrence.line_count - 1}}</div>
+                            <div><b>Line Count:</b> {{occurrence.line_count}}</div>
+                            <div><b>Duplication (%):</b> {{occurrence.duplication_percentage}}</div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</ng-template>

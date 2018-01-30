@@ -19,6 +19,8 @@ import { TDFindbugsComponent } from './td-findbugs/td-findbugs.component';
 import { TDFindbugsService } from './td-findbugs/td-findbugs.service';
 import { TDCheckstyleComponent } from './td-checkstyle/td-checkstyle.component';
 import { TDCheckstyleService } from './td-checkstyle/td-checkstyle.service';
+import { TDPmdCpdComponent } from './td-pmd-cpd/td-pmd-cpd.component';
+import { TDPmdCpdService } from './td-pmd-cpd/td-pmd-cpd.service';
 
 declare var require: any;
 export function highchartsFactory() {
@@ -39,7 +41,8 @@ export function highchartsFactory() {
     TDModalComponent,
     TDCodeSmellsComponent,
     TDFindbugsComponent,
-    TDCheckstyleComponent
+    TDCheckstyleComponent,
+    TDPmdCpdComponent
   ],
   providers: [
     {
@@ -51,7 +54,8 @@ export function highchartsFactory() {
     TDTimelineService,
     TDCodeSmellsService,
     TDFindbugsService,
-    TDCheckstyleService
+    TDCheckstyleService,
+    TDPmdCpdService
   ],
   exports: [
     TDModalComponent

@@ -1,0 +1,5 @@
+.even-spaced-text-container {
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+}

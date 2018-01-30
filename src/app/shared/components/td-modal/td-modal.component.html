@@ -29,6 +29,9 @@
         <li>
           <button class="btn btn-link" [class.tab-active]="tabView === 'td_checkstyle'" (click)="updateView('td_checkstyle')">CheckStyle</button>
         </li>
+        <li>
+          <button class="btn btn-link" [class.tab-active]="tabView === 'td_pmd_cpd'" (click)="updateView('td_pmd_cpd')">CPD</button>
+        </li>
       </ul>
 
       <div [ngSwitch]="tabView">
@@ -38,6 +41,7 @@
         <app-td-code-smells *ngSwitchCase="'td_code_smells'" [tdItem]="tdItem"></app-td-code-smells>
         <app-td-findbugs *ngSwitchCase="'td_findbugs'" [tdItem]="tdItem"></app-td-findbugs>
         <app-td-checkstyle *ngSwitchCase="'td_checkstyle'" [tdItem]="tdItem"></app-td-checkstyle>
+        <app-td-pmd-cpd *ngSwitchCase="'td_pmd_cpd'" [tdItem]="tdItem"></app-td-pmd-cpd>
       </div>
 
     </div>
