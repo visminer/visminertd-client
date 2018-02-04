@@ -32,6 +32,9 @@
         <li>
           <button class="btn btn-link" [class.tab-active]="tabView === 'td_pmd_cpd'" (click)="updateView('td_pmd_cpd')">CPD</button>
         </li>
+        <li>
+          <button class="btn btn-link" [class.tab-active]="tabView === 'td_excomment'" (click)="updateView('td_excomment')">ExComment</button>
+        </li>
       </ul>
 
       <div [ngSwitch]="tabView">
@@ -42,6 +45,7 @@
         <app-td-findbugs *ngSwitchCase="'td_findbugs'" [tdItem]="tdItem"></app-td-findbugs>
         <app-td-checkstyle *ngSwitchCase="'td_checkstyle'" [tdItem]="tdItem"></app-td-checkstyle>
         <app-td-pmd-cpd *ngSwitchCase="'td_pmd_cpd'" [tdItem]="tdItem"></app-td-pmd-cpd>
+        <app-td-excomment *ngSwitchCase="'td_excomment'" [tdItem]="tdItem"></app-td-excomment>
       </div>
 
     </div>
