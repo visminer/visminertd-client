@@ -15,13 +15,15 @@ export class TDFormComponent implements OnInit {
 
   constructor(private formServ: TDFormService) { }
 
-  ngOnInit() {
-  }
+  ngOnInit() { }
 
   onSubmit() {
     this.formServ.updateTDItem(this.tdItem).subscribe(r => {
-      if (r.success) { alert('Item updated.'); }
-      else { alert('An error occurred.'); }
+      if (r.success) {
+        alert('Item updated.');
+      } else {
+        alert('An error occurred.');
+      }
     });
   }
 

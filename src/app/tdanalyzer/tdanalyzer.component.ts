@@ -23,6 +23,7 @@ export class TDAnalyzerComponent implements OnInit {
   references: Reference[];
   repository: Repository;
   selectedReference: Reference = null;
+
   files$: Observable<TDItem[]>;
 
   constructor(private tdanalyzerServ: TDAnalyzerService, private visminerServ: VisminerService,
@@ -39,12 +40,14 @@ export class TDAnalyzerComponent implements OnInit {
     this.itemDetailsModal.content.commit = this.selectedReference.commits[0];
   }
 
-  updateViewByReference(): void {
+  updateTDItems(filter: any): void {
     if (!this.selectedReference) {
       alert('You need to select one reference on the menu.');
-      return;
+    } else if (!filter || (filter.indicators === [] && filter.checked === undefined && filter.intentional === undefined)) {
+      this.files$ = this.tdanalyzerServ.getTDItems(this.selectedReference.commits[0]);
+    } else {
+      this.files$ = this.tdanalyzerServ.getTDItemsByFilter(this.selectedReference.commits[0], filter);
     }
-    this.files$ = this.tdanalyzerServ.getTDItems(this.selectedReference.commits[0]);
   }
 
   confirmAllDebtsByReference(): void {

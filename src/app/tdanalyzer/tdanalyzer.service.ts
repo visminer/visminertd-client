@@ -13,10 +13,14 @@ export class TDAnalyzerService {
   constructor(private http: HttpClient) { }
 
   getTDItems(commit: string): Observable<TDItem[]> {
-    return this.http.get<TDItem[]>(`http://localhost:3000/api/technicaldebt/commit/${commit}`)
-    .pipe(
-      catchError(err => [])
-    );
+    return this.http.get<TDItem[]>(`http://localhost:3000/api/technicaldebt/commit/${commit}`).pipe(catchError(err => []));
+  }
+
+  getTDItemsByFilter(commit: string, request: any): Observable<TDItem[]> {
+    return this.http.get<TDItem[]>(
+      `http://localhost:3000/api/technicaldebt/commit/${commit}/indicators/${request.indicators}/checked/${request.checked}
+/intentional/${request.intentional}`)
+    .pipe(catchError(err => []));
   }
 
   confirmDebt(_id: string, debt: string): Observable<any> {

@@ -8,12 +8,20 @@
           <input type="text" class="form-control" id="id" name="id" value="{{tdItem._id}}" readonly>
         </div>
       </div>
-      
+
       <div class="form-group">
         <label for="responsible" class="control-label">Responsible</label>
         <div class="">
           <input type="text" class="form-control" id="responsible" name="responsible" [(ngModel)]="tdItem.responsible">
         </div>
+      </div>
+
+      <div class="form-group">
+        <label class="control-label" for="checked">Checked</label>
+        <select class="form-control" [(ngModel)]="tdItem.checked" name="checked">
+          <option [value]="false" [selected]="!tdItem.checked">No</option>
+          <option [value]="true" [selected]="tdItem.checked">Yes</option>
+        </select>
       </div>
 
       <div class="form-group">
@@ -31,7 +39,8 @@
         <label class="control-label">Types</label>
         <div>
           <div class="checkbox" *ngFor="let debt of tdItem.debts">
-            <label><input type="checkbox" name="{{debt.name}}" [checked]="debt.value" (change)="debt.value = debt.value === 1 ? 0 : 1">{{debt.name | removeChar}}</label>
+            <label>
+              <input type="checkbox" name="{{debt.name}}" [checked]="debt.value" (change)="debt.value = debt.value === 1 ? 0 : 1">{{debt.name | removeChar}}</label>
           </div>
         </div>
       </div>
@@ -40,9 +49,9 @@
         <label for="intentional" class="control-label">Intentional</label>
         <div class="">
           <select class="form-control" [(ngModel)]="tdItem.intentional" name="intentional">
-            <option [value]="yes" [selected]="tdItem.intentional === 'yes'">Yes</option>
-            <option [value]="no" [selected]="tdItem.intentional === 'no'">No</option>
-            <option [value]="not_sure" [selected]="tdItem.intentional === 'not_sure' || !tdItem.intentional">Not sure</option>
+            <option [value]="0" [selected]="tdItem.intentional == 0">Not sure</option>
+            <option [value]="-1" [selected]="tdItem.intentional == -1">No</option>
+            <option [value]="1" [selected]="tdItem.intentional == 1">Yes</option>
           </select>
         </div>
       </div>
@@ -68,12 +77,12 @@
         </div>
       </div>
 
-      </div>
+    </div>
 
-      <div class="form-group">
-        <div class="col-sm-offset-3 col-sm-9" style="text-align:right;padding-right:65px;">
-          <button type="submit" class="btn btn-success">Save</button>
-        </div>
+    <div class="form-group">
+      <div class="col-sm-offset-3 col-sm-9" style="text-align:right;padding-right:65px;">
+        <button type="submit" class="btn btn-success">Save</button>
+      </div>
     </div>
 
   </form>

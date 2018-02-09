@@ -1,0 +1,59 @@
+<div class="box box-primary">
+  <div class="box-header with-border">
+    <i class="fa fa-filter" style="font-size: 15px"></i>
+    <h4 class="box-title">Filters</h4>
+    <div class="box-tools pull-right">
+      <button type="button" class="btn btn-box-tool" data-widget="collapse">
+        <i class="fa fa-minus"></i>
+      </button>
+    </div>
+  </div>
+
+  <div class="box-body">
+
+    <div class="row">
+
+      <div class="col-md-5">
+        <div class="form-group">
+          <label class="control-label">Technical Debt Indicators</label>
+          <angular2-multiselect [data]="indicatorsList"
+            [(ngModel)]="selectedIndicators"
+            [settings]="indicatorsSettings">
+          </angular2-multiselect>
+        </div>
+      </div>
+
+      <div class="col-md-3">
+        <div class="form-group">
+          <label class="control-label" for="checked">Checked</label>
+          <select class="form-control" [(ngModel)]="checked" name="checked">
+            <option [value]="null" [selected]="true">Any option</option>
+            <option [value]="true">Yes</option>
+            <option [value]="false">No</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="col-md-3">
+        <div class="form-group">
+          <label for="intentional" class="control-label">Intentional</label>
+          <select class="form-control" [(ngModel)]="intentional" name="intentional">
+            <option [value]="null" [selected]="true">Any option</option>
+            <option [value]="0">Not sure</option>
+            <option [value]="-1">No</option>
+            <option [value]="1">Yes</option>
+          </select>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="row">
+      <div class="col-md-12">
+        <button type="button" class="btn bg-olive btn-flat pull-right" (click)="updateQuery()">Update Query</button>
+      </div>
+    </div>
+
+  </div>
+
+</div>

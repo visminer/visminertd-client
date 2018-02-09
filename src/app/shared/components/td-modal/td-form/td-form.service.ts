@@ -13,11 +13,8 @@ export class TDFormService {
   constructor(private http: HttpClient) { }
 
   updateTDItem(tdItem: TDItem): Observable<any> {
-    return this.http.put<any>('http://localhost:3000/api/technicaldebt/update',
-    tdItem, DEFAULT_HEADER)
-    .pipe(
-      catchError(err => null)
-    );
+    return this.http.put<any>('http://localhost:3000/api/technicaldebt/update', tdItem, DEFAULT_HEADER)
+    .pipe(catchError(err => null));
   }
 
 }

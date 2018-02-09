@@ -7,6 +7,7 @@ import { TDAnalyzerComponent } from './tdanalyzer.component';
 import { TDAnalyzerService } from './tdanalyzer.service';
 import { AlertModule } from '../shared/components/alert/alert.module';
 import { TdModalModule } from '../shared/components/td-modal/td-modal.module';
+import { TDFilterModule } from './../shared/components/td-filter/td-filter.module';
 
 @NgModule({
   imports: [
@@ -14,10 +15,11 @@ import { TdModalModule } from '../shared/components/td-modal/td-modal.module';
     AlertModule,
     FormsModule,
     TdModalModule,
-    PipesModule
+    PipesModule,
+    TDFilterModule
   ],
   declarations: [
-    TDAnalyzerComponent,
+    TDAnalyzerComponent
   ],
   providers: [
     TDAnalyzerService,

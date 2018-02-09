@@ -22,13 +22,14 @@ export class TDItem {
     debts: TDItemDebt[];
     responsible: string;
     description: string;
-    intentional: string;
+    intentional: number;
     principal: number;
     interest: number;
     interest_probability: number;
     commit: string;
     repository: string;
     reference: string;
+    checked: boolean;
 
     private _commit_date: Date;
 
