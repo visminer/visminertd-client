@@ -10,6 +10,13 @@
       </div>
 
       <div class="form-group">
+        <label for="source" class="control-label">Source</label>
+        <div class="">
+          <textarea style="height: 50px;" class="form-control" id="source" name="source" value="{{tdItem.filename}}" readonly></textarea>
+        </div>
+      </div>
+
+      <div class="form-group">
         <label for="responsible" class="control-label">Responsible</label>
         <div class="">
           <input type="text" class="form-control" id="responsible" name="responsible" [(ngModel)]="tdItem.responsible">

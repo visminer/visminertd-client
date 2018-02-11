@@ -9,6 +9,10 @@ import { Pipe, PipeTransform } from '@angular/core';
 export class ExtractFilenamePipe implements PipeTransform {
 
   transform(value: any, args?: any) {
+    if (!value) {
+      return '';
+    }
+
     if (value.includes('/')) {
       return value.substring(value.lastIndexOf('/') + 1, value.lastIndexOf('.'));
     } else {

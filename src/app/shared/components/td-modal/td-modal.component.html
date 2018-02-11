@@ -2,9 +2,9 @@
   <div class="modal-content">
 
     <div class="modal-header modal-header-info">
-      <h4 class="modal-title pull-left">{{tdItem.filename}}</h4>
+      <h4 class="modal-title pull-left">{{tdItem.filename | extractFilename}}</h4>
       <button type="button" class="close pull-right" aria-label="Close" (click)="bsModalRef.hide()">
-        <span aria-hidden="true">&times;</span>
+        <span style="font-size: 30px;">&times;</span>
       </button>
     </div>
 
