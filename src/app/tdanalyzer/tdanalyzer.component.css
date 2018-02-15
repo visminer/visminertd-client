@@ -33,31 +33,6 @@
     white-space: normal;
 }
 
-.bg-code-debt {
-    background-color: #1B93A7!important;
-    margin-right: 5px;
-}
-
-.bg-design-debt {
-    background-color: #91A28B!important;
-    margin-right: 5px;
-}
-
-.bg-defect-debt {
-    background-color: #dd3939!important;
-    margin-right: 5px;
-}
-
-.bg-test-debt {
-    background-color: #f39c12!important;
-    margin-right: 5px;
-}
-
-.bg-requirement-debt {
-    background-color: #8a6d3b!important;
-    margin-right: 5px;
-}
-
 .btn-span-tool {
     padding: 0px;
     font-size: 10px;

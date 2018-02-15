@@ -19,6 +19,7 @@ import { TDItem, TDItemDebt } from './../shared/models/TDItem';
 export class TDAnalyzerComponent implements OnInit {
 
   itemDetailsModal: BsModalRef;
+  filter: any;
 
   references: Reference[];
   repository: Repository;
@@ -40,22 +41,25 @@ export class TDAnalyzerComponent implements OnInit {
     this.itemDetailsModal.content.commit = this.selectedReference.commits[0];
   }
 
-  updateTDItems(filter: any): void {
-    if (!this.selectedReference) {
-      alert('You need to select one reference on the menu.');
-    } else if (!filter || (filter.indicators === [] && filter.checked === undefined && filter.intentional === undefined)) {
-      this.files$ = this.tdanalyzerServ.getTDItems(this.selectedReference.commits[0]);
+  updateTDItems(filter?: any): void {
+    this.filter = filter;
+
+    if (this.selectedReference) {
+      this.files$ = this.tdanalyzerServ.getTDItems(this.selectedReference.commits[0], filter);
     } else {
-      this.files$ = this.tdanalyzerServ.getTDItemsByFilter(this.selectedReference.commits[0], filter);
+      alert('You need to select one reference on the menu.');
     }
   }
 
-  confirmAllDebtsByReference(): void {
+  confirmAllDebtsByReference(filter?: any): void {
     if (!this.selectedReference) {
       alert('You need to select one reference on the menu.');
       return;
     }
-    this.tdanalyzerServ.confirmAllDebt(this.selectedReference.commits[0]).subscribe(r => console.log(r));
+
+    if (confirm('Are you sure?')) {
+      this.tdanalyzerServ.confirmAllDebt(this.selectedReference.commits[0], filter).subscribe(r => console.log(r));
+    }
   }
 
   showTypeSmellsDetails(file: TDItem): void {

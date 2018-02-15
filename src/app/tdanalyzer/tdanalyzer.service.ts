@@ -12,15 +12,14 @@ export class TDAnalyzerService {
 
   constructor(private http: HttpClient) { }
 
-  getTDItems(commit: string): Observable<TDItem[]> {
-    return this.http.get<TDItem[]>(`http://localhost:3000/api/technicaldebt/commit/${commit}`).pipe(catchError(err => []));
-  }
+  getTDItems(commit: string, filter?: any): Observable<TDItem[]> {
+    let url = `http://localhost:3000/api/technicaldebt/commit/${commit}`;
 
-  getTDItemsByFilter(commit: string, request: any): Observable<TDItem[]> {
-    return this.http.get<TDItem[]>(
-      `http://localhost:3000/api/technicaldebt/commit/${commit}/indicators/${request.indicators}/checked/${request.checked}
-/intentional/${request.intentional}`)
-    .pipe(catchError(err => []));
+    if (filter) {
+      url += `/indicators/${filter.indicators}/checked/${filter.checked}/intentional/${filter.intentional}`;
+    }
+
+    return this.http.get<TDItem[]>(url).pipe(catchError(err => []));
   }
 
   confirmDebt(_id: string, debt: string): Observable<any> {
@@ -31,22 +30,18 @@ export class TDAnalyzerService {
     return this.changeDebtStatus(_id, debt, 'removedebt');
   }
 
-  confirmAllDebt(commit: string): Observable<any> {
+  confirmAllDebt(commit: string, filter?: any): Observable<any> {
     return this.http.put<any>(`http://localhost:3000/api/technicaldebt/confirmall`,
-    { commit: commit },
+    { commit: commit, filter: filter },
     DEFAULT_HEADER)
-    .pipe(
-      catchError(err => null)
-    );
+    .pipe(catchError(err => null));
   }
 
   private changeDebtStatus(_id: string, debt: string, option: string): Observable<any> {
     return this.http.put<any>(`http://localhost:3000/api/technicaldebt/${option}`,
     { _id: _id, debt: debt },
     DEFAULT_HEADER)
-    .pipe(
-      catchError(err => null)
-    );
+    .pipe(catchError(err => null));
   }
 
 }

@@ -5,7 +5,7 @@
       <label class="control-label">Classes</label>
       <div>
         <select class="form-control" [(ngModel)]="clazz" (change)="updateChart()">
-          <option *ngFor="let cls of allClasses" [value]="cls">{{cls}}</option>
+          <option *ngFor="let cls of allClasses" [value]="cls">{{cls | extractClassname}}</option>
         </select>
       </div>
     </div>
