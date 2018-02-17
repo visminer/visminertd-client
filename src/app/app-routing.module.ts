@@ -8,7 +8,7 @@ import { TDEvolutionComponent } from './tdevolution/tdevolution.component';
 import { TDManagementComponent } from './tdmanagement/tdmanagement.component';
 
 const routes: Routes = [
-  { path: '', component: HomeComponent },
+  { path: '', component: TDEvolutionComponent },
   { path: 'tdanalyzer', component: TDAnalyzerComponent },
   { path: 'tdevolution', component: TDEvolutionComponent },  
   { path: 'tdmanagement', component: TDManagementComponent },  
