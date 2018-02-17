@@ -39,7 +39,7 @@
         <ul class="treeview-menu">
           <li *ngFor="let reference of references">
             <label class="control-sidebar-subheading filter-version-sub-item">
-              <input type="checkbox" (change)="addReference(reference)">
+              <input type="checkbox" [checked]="isChecked(reference)" (change)="addReference(reference)">
               <span class="gray-medium">{{reference.name}}</span>
             </label>
           </li>

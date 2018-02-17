@@ -21,15 +21,28 @@ export class SidebarComponent implements OnInit {
 
   ngOnInit() {
     this.sidebarServ.getRepositories().subscribe(result => this.repositories = result);
+    let selectedRepository: Repository = JSON.parse(localStorage.getItem('repository'));
+    if (selectedRepository) {
+      this.sidebarServ.getReferences(selectedRepository._id).subscribe(result => this.references = result);
+    }
   }
 
   setRepository(repository: Repository): void {
-    this.visminerServ.repository = repository;
+    this.visminerServ.setRepository(repository);
     this.sidebarServ.getReferences(repository._id).subscribe(result => this.references = result);
   }
 
   addReference(reference: Reference): void {
     this.visminerServ.addReference(reference);
+  }
+
+  isChecked(reference: Reference): boolean {
+    for (let i = 0; i < this.visminerServ.references.length; i++) {
+      if (reference._id == this.visminerServ.references[i]._id) {
+        return true;
+      }
+    }
+    return false;
   }
 
 }
