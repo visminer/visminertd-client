@@ -9,7 +9,7 @@
   <section class="content-header">
     <h1>
       <i class="fa fa-database"></i>
-      {{ repository.name }}
+      {{ repository.name }}<span *ngIf="references.length == 1"> - {{ references[0].name }}</span>
     </h1>
     <ol class="breadcrumb">
       <li class="active"><i class="fa fa-line-chart"></i> TD Evolution</li>
@@ -18,6 +18,7 @@
       
   <section id="section-content" class="content">
     <nouislider id="slider"
+                *ngIf="references.length > 1"
                 [config]="sliderConfig"
                 [connect]="true"
                 [behaviour]="drag"
@@ -26,7 +27,8 @@
                 [max]="references.length - 1" 
                 [(ngModel)]="sliderRange" 
                 (change)="onChangeSlider($event)" 
-                style="padding: 0 10px 40px 10px;"></nouislider>
+                style="padding: 0 10px 40px 10px;">
+    </nouislider>
     <tdevolution-boxes [sliderRange]="sliderRange" [references]="references" [tdBoxes]="tdBoxes"></tdevolution-boxes>
     <chart id="stacked-column-chart" [options]="chartConfig"></chart>
   </section>
