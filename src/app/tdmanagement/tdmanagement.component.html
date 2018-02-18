@@ -1,29 +1,23 @@
-<div *ngIf="!repository && !references.length; then thenBlock else elseBlock"></div>
+<div class="content-wrapper">
+  <!-- Content Header (Page header) -->
+  <section class="content-header">
+    <h1>
+      TD Management
+    </h1>
+    <ol class="breadcrumb">
+      <li>
+        <a routerLink="../tdevolution" routerLinkActive="active">TD Evolution</a>
+      </li>
+      <li class="active">TD Management</li>
+    </ol>
+  </section>
 
-<ng-template #thenBlock>
-  <app-alert></app-alert>
-</ng-template>
+  <!-- Main content -->
+  <section class="content" style="padding-top: 40px">
+    <kanban-board title="TO DO" [tdItems]="tdItems" [count]="todoCount" (uploaded)="kanbanBoardEvent($event)"></kanban-board>
+    <kanban-board title="DOING" [tdItems]="tdItems" [count]="doingCount" (uploaded)="kanbanBoardEvent($event)"></kanban-board>
+    <kanban-board title="DONE" [tdItems]="tdItems" [count]="doneCount" (uploaded)="kanbanBoardEvent($event)"></kanban-board>
+  </section>
+  <!-- /.content -->
 
-<ng-template #elseBlock>
-  <div class="content-wrapper">
-    <!-- Content Header (Page header) -->
-    <section class="content-header">
-      <h1>
-        TD Management
-      </h1>
-      <ol class="breadcrumb">
-        <li><a routerLink="../tdevolution" routerLinkActive="active">TD Evolution</a></li>
-        <li class="active">TD Management</li>
-      </ol>
-    </section>
-  
-    <!-- Main content -->
-    <section class="content" style="padding-top: 40px">
-      <kanban-board title="TO DO" [tdItems]="tdItems" [count]="todoCount" (uploaded)="kanbanBoardEvent($event)"></kanban-board>
-      <kanban-board title="DOING" [tdItems]="tdItems" [count]="doingCount" (uploaded)="kanbanBoardEvent($event)"></kanban-board>
-      <kanban-board title="DONE" [tdItems]="tdItems"  [count]="doneCount" (uploaded)="kanbanBoardEvent($event)"></kanban-board>
-    </section>
-    <!-- /.content -->
-  
-  </div>
-</ng-template>
+</div>

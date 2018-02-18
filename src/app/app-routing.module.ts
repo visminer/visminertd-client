@@ -6,16 +6,20 @@ import { HomeComponent } from './home/home.component';
 import { TDAnalyzerComponent } from './tdanalyzer/tdanalyzer.component';
 import { TDEvolutionComponent } from './tdevolution/tdevolution.component';
 import { TDManagementComponent } from './tdmanagement/tdmanagement.component';
+import ActivateGuard from './activate-guard';
 
 const routes: Routes = [
-  { path: '', component: TDEvolutionComponent },
-  { path: 'tdanalyzer', component: TDAnalyzerComponent },
-  { path: 'tdevolution', component: TDEvolutionComponent },  
-  { path: 'tdmanagement', component: TDManagementComponent },  
+  { path: '', component: HomeComponent },
+  { path: 'tdanalyzer', component: TDAnalyzerComponent, canActivate: [ActivateGuard] },
+  { path: 'tdevolution', component: TDEvolutionComponent, canActivate: [ActivateGuard] },
+  { path: 'tdmanagement', component: TDManagementComponent, canActivate: [ActivateGuard] },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
+  providers: [
+    ActivateGuard,
+  ],
 })
 export class AppRoutingModule { }

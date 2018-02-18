@@ -8,7 +8,10 @@ export class VisminerService {
   
   constructor() { 
     this.repository = JSON.parse(localStorage.getItem('repository'));
-    this.references = JSON.parse(localStorage.getItem('references'));
+    let cachedReferences = JSON.parse(localStorage.getItem('references'));
+    if (cachedReferences) {
+      this.references = cachedReferences;
+    }  
   }
 
   repository: Repository = null;
@@ -26,6 +29,9 @@ export class VisminerService {
   }
 
   getReferenceIndex(reference: Reference): number {
+    if (!this.references)
+      return -1;
+
     for (let i = 0; i < this.references.length; i++) {
       if (reference._id == this.references[i]._id) {
         return i;

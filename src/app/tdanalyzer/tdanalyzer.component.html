@@ -1,10 +1,3 @@
-<div *ngIf="!repository && !references.length; then thenBlock else elseBlock"></div>
-
-<ng-template #thenBlock>
-  <app-alert></app-alert>
-</ng-template>
-
-<ng-template #elseBlock>
 <div class="content-wrapper">
   <!-- Content Header (Page header) -->
   <section class="content-header">
@@ -106,4 +99,3 @@
   </section>
   <!-- /.content -->
 </div>
-</ng-template>

@@ -6,7 +6,6 @@ import { TDEvolutionComponent } from './tdevolution.component';
 import { TDEvolutionBoxesComponent } from './boxes/boxes.component';
 import { NouisliderComponent } from 'ng2-nouislider/src/nouislider';
 import { ChartModule } from 'angular2-highcharts';
-import { AlertModule } from '../shared/components/alert/alert.module';
 import { TDEvolutionService } from './tdevolution.service';
 
 declare var require: any;
@@ -18,7 +17,6 @@ export function highchartsFactory() {
   imports: [
     CommonModule,
     ChartModule,
-    AlertModule,
   ],
   declarations: [TDEvolutionComponent, TDEvolutionBoxesComponent, NouisliderComponent],
   providers: [
