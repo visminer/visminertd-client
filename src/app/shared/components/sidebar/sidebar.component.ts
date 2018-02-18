@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { SidebarService } from './sidebar.service';
 import { VisminerService } from '../../services/visminer.service';
@@ -17,7 +18,7 @@ export class SidebarComponent implements OnInit {
 
   refs: Reference[] = [];
 
-  constructor(private sidebarServ: SidebarService, private visminerServ: VisminerService) { }
+  constructor(private sidebarServ: SidebarService, private visminerServ: VisminerService, private router: Router) { }
 
   ngOnInit() {
     this.sidebarServ.getRepositories().subscribe(result => this.repositories = result);
@@ -37,12 +38,19 @@ export class SidebarComponent implements OnInit {
   }
 
   isChecked(reference: Reference): boolean {
+    if (!this.visminerServ.references)
+      return false;
+      
     for (let i = 0; i < this.visminerServ.references.length; i++) {
       if (reference._id == this.visminerServ.references[i]._id) {
         return true;
       }
     }
     return false;
+  }
+
+  redirect() {
+    this.router.navigate(['/tdanalyzer']);
   }
 
 }
