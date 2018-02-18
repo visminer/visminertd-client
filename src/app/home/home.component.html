@@ -1,16 +1,96 @@
 <div class="content-wrapper">
-  <section class="content-header">
-    <h1>
-      Page Header
-      <small>Optional description</small>
-    </h1>
-    <ol class="breadcrumb">
-      <li><a href="#"><i class="fa fa-dashboard"></i> Level</a></li>
-      <li class="active">Here</li>
-    </ol>
-  </section>
-      
-  <section class="content">
-    <p>Home Works!!!</p>
+  <section class="content" style="padding-left:0; padding-right:0">
+
+    <div class="col-sm-12">
+      <div class="box box-solid box-info">
+        <div class="box-header with-border">
+          <h3 class="box-title">General Description</h3>
+        </div>
+        <div class="box-body">
+          <p>
+            Visminer Web is a tool which allows automatic identification and interactive monitoring of the evolution of debt items. Visminer
+            Web offers a set of visual perspectives to support the development team in its activities of identifying and
+            monitoring the evolution of DT items.
+          </p>
+          <p>
+            This tool displays information about the structure and evolution of software projects from metrics and comments extracted
+            from source code repositories. See below some of the information available on Visminer Web:
+          </p>
+
+          <div class="col-sm-6 box-highlight">
+            <ul class="col-sm-6">
+              <li>22 Software Metrics</li>
+              <li>9 Code Smells</li>
+            </ul>
+            <ul class="col-sm-6">
+              <li>Duplicate Code</li>
+              <li>8 Technical Debts</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-sm-12">
+      <div class="box box-solid box-info">
+        <div class="box-header with-border">
+          <h3 class="box-title">Analyzing, Identifying and Confirming TDs</h3>
+        </div>
+        <div class="box-body">
+          <p>
+            On the sidebar, <b>select the repository</b>, then <b>select all the versions</b> you want to analyze. Click on the button "Analyze", so
+            you can be redirected to TDAnalyzer perspective to see the TD items identified.
+          </p>
+          <p>
+            Keep in mind that the items are identified as possibly having a TD. You need to confirm or reject the presence of TD in the
+            items. On TDAnalyzer, you can find a detailed description of the indicators found to help you to take the decision
+            to confirm or reject the TD item.
+          </p>
+        </div>
+      </div>
+    </div>
+
+
+    <div>
+      <div class="col-sm-6">
+        <div class="box box-solid box-info">
+          <div class="box-header with-border">
+            <h3 class="box-title">TDEvolution</h3>
+          </div>
+          <div class="box-body" style="height:200px">
+            <p>
+              TDEvolution allows you to observe how the presence of TD behaves in the different versions of the software analyzed previously.
+              This information makes it possible to realize in which moments changes occur that can positively or negatively
+              affect the maintenance of the project.
+            </p>
+            <p>
+              Different features are used to compare the versions, such as: <b>Number of Commits, Classes, Indicators and TDs.</b>
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <div class="box box-solid box-info">
+          <div class="box-header with-border">
+            <h3 class="box-title">TDManagement</h3>
+          </div>
+          <div class="box-body" style="height:200px">
+            <p>
+              TDManagement is the module responsible to support in the management and monitoring of TDs through the use of 3 panels:
+            </p>
+            <p>
+                <b>TO DO:</b> items that had the debts confirmed, but has not yet been paid.
+            </p>
+            <p>    
+                <b>DOING:</b> all TDs that are being paid at the moment.
+            </p>
+            <p>    
+                <b>DONE:</b> debts that were paid previously.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
   </section>
 </div>

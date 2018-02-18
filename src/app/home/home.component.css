@@ -1,0 +1,24 @@
+h3.box-title {
+    font-weight: bold;
+}
+
+div.box-body {
+    font-size: 16px;
+}
+
+.box-highlight {
+    background-color: #e1e2e8;
+    border-radius: 5px;
+}
+
+ul.col-sm-6 {
+    margin-bottom: 0;
+}
+
+div.box.box-solid.box-info {
+    border: none;
+}
+
+div.box.box-solid.box-info > div.box-header.with-border {
+    background-color: #76a7b3;
+}
