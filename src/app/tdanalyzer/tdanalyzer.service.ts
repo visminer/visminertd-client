@@ -16,7 +16,7 @@ export class TDAnalyzerService {
     let url = `http://localhost:3000/api/technicaldebt/commit/${commit}`;
 
     if (filter) {
-      url += `/indicators/${filter.indicators}/checked/${filter.checked}/intentional/${filter.intentional}`;
+      url += `/indicators/${filter.indicators}/checked/${filter.checked}/intentional/${filter.intentional}/filename/${filter.filename}`;
     }
 
     return this.http.get<TDItem[]>(url).pipe(catchError(err => []));

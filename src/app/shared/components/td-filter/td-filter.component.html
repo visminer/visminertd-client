@@ -49,6 +49,15 @@
     </div>
 
     <div class="row">
+      <div class="col-md-11">
+        <div class="form-group">
+          <label for="filename" class="control-label">Filename</label>
+          <input type="text" class="form-control" [(ngModel)]="filename" name="filename" placeholder="Search by the name of a file.">
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
       <div class="col-md-12">
         <button type="button" class="btn bg-olive btn-flat pull-right" (click)="updateQuery()">Update Query</button>
       </div>

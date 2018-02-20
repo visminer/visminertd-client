@@ -9,6 +9,7 @@ export class TDFilterComponent implements OnInit {
 
   checked = 'null';
   intentional = 'null';
+  filename = '';
 
   indicatorsList = [];
   selectedIndicators = [];
@@ -21,7 +22,7 @@ export class TDFilterComponent implements OnInit {
   ngOnInit() {
     this.indicatorsList = [
       // Unknown Debt
-      { 'id': 'COMMENT_ANALYSIS_UNKNOWN_DEBT', itemName: 'Comment Analysis', category: 'Unknown Debt'}
+      { 'id': 'COMMENT_ANALYSIS_UNKNOWN_DEBT', itemName: 'Comment Analysis', category: 'Unknown Debt'},
 
       // Code Debt
       { 'id': 'GOD_CLASS', itemName: 'God Class', category: 'Code Debt' },
@@ -84,7 +85,8 @@ export class TDFilterComponent implements OnInit {
     const request = {
       indicators: this.selectedIndicators.length > 0 ? this.selectedIndicators.map(elem => elem.id) : 'null',
       checked: this.checked,
-      intentional: this.intentional
+      intentional: this.intentional,
+      filename: this.filename
     };
     this.updateFilter.emit(request);
   }

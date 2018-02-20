@@ -62,10 +62,6 @@ export class TDAnalyzerComponent implements OnInit {
     }
   }
 
-  showTypeSmellsDetails(file: TDItem): void {
-    console.log(file);
-  }
-
   confirmDebt(file: TDItem, debt: TDItemDebt): void {
     this.tdanalyzerServ.confirmDebt(file._id, debt.name).subscribe(r => console.log(r));
   }
