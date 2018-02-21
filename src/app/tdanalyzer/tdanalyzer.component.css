@@ -1,3 +1,17 @@
+.type-box {
+    margin-right: 5px;
+    margin-top: 5px;
+    float: left;
+}
+
+.indicator-box {
+    margin-right: 5px;
+    margin-top: 5px;
+    float: left;
+    padding: 4px;
+    font-size: 11px;
+}
+
 .btn-filter-analyze{
     margin: 20px 0px 0px !important;
     width: 100%;
