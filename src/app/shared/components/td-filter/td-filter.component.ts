@@ -86,7 +86,7 @@ export class TDFilterComponent implements OnInit {
       indicators: this.selectedIndicators.length > 0 ? this.selectedIndicators.map(elem => elem.id) : 'null',
       checked: this.checked,
       intentional: this.intentional,
-      filename: this.filename
+      filename: this.filename.length == 0 ? 'null' : this.filename
     };
     this.updateFilter.emit(request);
   }

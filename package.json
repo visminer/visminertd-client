@@ -50,7 +50,7 @@
     "moment": "^2.18.1",
     "morris.js": "^0.5.0",
     "ng2-nouislider": "^1.7.7",
-    "ngx-bootstrap": "^2.0.0-rc.0",
+    "ngx-bootstrap": "^2.0.2",
     "nouislider": "^10.1.0",
     "npm": "^5.3.0",
     "raphael": "^2.2.7",
