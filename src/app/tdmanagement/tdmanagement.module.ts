@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 import { TDManagementComponent } from './tdmanagement.component';
 import { TDManagementService } from './tdmanagement.service';
@@ -11,6 +12,7 @@ import { SortablejsModule } from 'angular-sortablejs';
   imports: [
     CommonModule,
     SortablejsModule,
+    FormsModule
   ],
   declarations: [
     TDManagementComponent, KanbanBoardComponent, BoardItemComponent,

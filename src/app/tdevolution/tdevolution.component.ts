@@ -226,7 +226,7 @@ getReport(referenceName: string) {
       let referenceName = this.references[i].name;
       this.filesReport.forEach((fileReport) => {
         // _id is actually the reference name
-        if (referenceName === fileReport._id) {
+        if (fileReport._id.includes(referenceName)) {
           this.tdBoxes.classesTotal.push(fileReport.totalFiles);
         }
       });

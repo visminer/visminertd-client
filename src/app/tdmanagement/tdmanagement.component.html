@@ -14,6 +14,18 @@
 
   <!-- Main content -->
   <section class="content" style="padding-top: 40px">
+
+    <div class="form-group row" style="margin-left:10px;">
+      <div class="col-md-1">
+        <label class="control-label">Version:</label>
+      </div>
+      <div class="col-md-6">
+        <select style="width: 100%;" class="form-control" [(ngModel)]="selectedReference" (change)="updateKanban()">
+          <option *ngFor="let reference of references" [ngValue]="reference">{{reference.name}}</option>
+        </select>
+      </div>
+    </div>
+
     <kanban-board title="TO DO" [tdItems]="tdItems" [count]="todoCount" (uploaded)="kanbanBoardEvent($event)"></kanban-board>
     <kanban-board title="DOING" [tdItems]="tdItems" [count]="doingCount" (uploaded)="kanbanBoardEvent($event)"></kanban-board>
     <kanban-board title="DONE" [tdItems]="tdItems" [count]="doneCount" (uploaded)="kanbanBoardEvent($event)"></kanban-board>

@@ -21,21 +21,29 @@ export class TDManagementComponent implements OnInit {
   doingCount: number = 0;
   doneCount: number = 0;
 
+  selectedReference: Reference = null;
+
   constructor(private tdManagementServ: TDManagementService, private visminerServ: VisminerService) { }
 
   ngOnInit() {
     this.repository = this.visminerServ.repository;
-    this.references = this.visminerServ.references;
+    this.references = this.visminerServ.references; 
+  }
 
-    // TODO: Give the option to choose which ref to analyze
-    if (this.repository) {
-      this.tdManagementServ.getTDByRepoAndRef(this.repository._id, 'master').subscribe(
+  updateKanban() {
+    if (this.selectedReference) {
+      this.tdManagementServ.getTDByRepoAndCommit(this.repository._id, this.selectedReference.commits[0]).subscribe(
         data => {
           this.tdItems = data;
           this.countDebts();
         }
       );
-    }  
+    } else {
+      this.tdItems = [];
+      this.todoCount = 0;
+      this.doingCount = 0;
+      this.doneCount = 0;
+    }
   }
 
   countDebts() {
