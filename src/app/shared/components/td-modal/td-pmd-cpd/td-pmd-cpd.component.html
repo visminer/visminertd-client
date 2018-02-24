@@ -16,7 +16,7 @@
 
 <ng-template #elseBlock>
     <div class="row" style="padding: 10px;">
-        <h4>Total Duplication: {{totalDuplication}}</h4>
+        <h4>Total Duplication: {{totalDuplication}}%</h4>
         <h4>Duplication Occurrences</h4>
 
         <div class="box box-primary" *ngFor="let duplication of duplications">
@@ -29,7 +29,7 @@
             
             <div class="box-body">
                 <ul class="list-group">
-                    <li class="list-group-item" *ngFor="let occurrence of duplication.occurrences">
+                    <li class="list-group-item" *ngFor="let occurrence of duplication.occurrences" style="border-color:black !important;">
                         <b>Filename:</b> {{occurrence.filename}}
                         <br>
                         <div class="even-spaced-text-container">

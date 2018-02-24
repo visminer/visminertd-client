@@ -77,8 +77,7 @@ export class TDFilterComponent implements OnInit {
       searchPlaceholderText: 'Search Fields',
       enableSearchFilter: true,
       badgeShowLimit: 6,
-      groupBy: 'category',
-      classes: 'select-indicators'
+      groupBy: 'category'
     };
   }
 
