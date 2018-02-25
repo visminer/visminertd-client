@@ -30,6 +30,7 @@ export class TDItem {
     repository: string;
     reference: string;
     checked: boolean;
+    estimate: number;
 
     private _commit_date: Date;
 
