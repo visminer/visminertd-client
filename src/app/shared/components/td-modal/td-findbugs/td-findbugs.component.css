@@ -8,3 +8,11 @@
     text-align: justify;
     text-justify: inter-word;
 }
+
+.findbugs-element:nth-child(odd) {
+    background-color: white;
+}
+
+.findbugs-element:nth-child(even) {
+    background-color: #f9f9f9;
+}

@@ -8,3 +8,11 @@
     text-align: justify;
     text-justify: inter-word;
 }
+
+.checkstyle-element:nth-child(even) {
+    background-color: white;
+}
+
+.checkstyle-element:nth-child(odd) {
+    background-color: #f9f9f9;
+}

@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 
 import { ChartModule } from 'angular2-highcharts';
 import { HighchartsStatic } from 'angular2-highcharts/dist/HighchartsService';
+import {NgxPaginationModule} from 'ngx-pagination';
 
 import { PipesModule } from './../../pipes/pipes.module';
 import { TDTimelineComponent } from './td-timeline/td-timeline.component';
@@ -34,7 +35,8 @@ export function highchartsFactory() {
     CommonModule,
     FormsModule,
     PipesModule,
-    ChartModule
+    ChartModule,
+    NgxPaginationModule
   ],
   declarations: [
     TDFormComponent,

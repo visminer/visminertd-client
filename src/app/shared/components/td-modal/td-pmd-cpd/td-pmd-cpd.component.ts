@@ -15,6 +15,7 @@ export class TDPmdCpdComponent implements OnInit {
 
   duplications: CPD[] = [];
   totalDuplication = 0;
+  page = 1;
 
   constructor(private service: TDPmdCpdService) { }
 

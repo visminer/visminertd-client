@@ -13,6 +13,7 @@ export class TDExcommentComponent implements OnInit {
 
   @Input() tdItem: TDItem;
   comments: Comment[] = [];
+  page = 1;
 
   constructor(private service: TDExcommentService) { }
 

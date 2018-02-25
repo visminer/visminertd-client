@@ -17,7 +17,9 @@
     <div class="box box-primary">
       <div class="box-header with-border">
         <i class="fa fa-database" style="font-size: 15px"></i>
-        <h2 class="box-title">{{repository.name}}</h2>
+        <h2 class="box-title">{{repository.name}} 
+          <span *ngIf="totalItems > 0"> - {{totalItems}} Itens Found</span>
+        </h2>
         <div class="box-tools pull-right">
           <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
         </div>
@@ -47,7 +49,9 @@
         </div>
 
         <form class="form-inline" style="padding-top: 40px;">
-          <div class="form-group col-lg-4 col-xs-6 col-md-4" style="padding-top: 10px; padding-bottom: 10px;" *ngFor="let file of files$ | async">
+          <div class="form-group col-lg-4 col-xs-6 col-md-4"
+          style="padding-top: 10px; padding-bottom: 10px;" 
+          *ngFor="let file of files | paginate: { itemsPerPage: 10, currentPage: page }">
             <div class="box-analyzer-item">
               <div class="box-header with-border" style="border-bottom-color: rgba(38, 28, 92, 0.21);">
                 <button type="button" class="btn btn-link box-title" title="{{file.filename}}" (click)="showDetails(file)" style="font-weight: bold;">
@@ -89,6 +93,11 @@
             </div>
             <!-- /.box -->
           </div>
+
+          <div style="text-align: center; clear: both">
+            <pagination-controls (pageChange)="page = $event"></pagination-controls>
+          </div>
+
         </form>
       </div>
       <!-- /.box-body -->

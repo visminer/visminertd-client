@@ -2,6 +2,8 @@ import { FormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
+import {NgxPaginationModule} from 'ngx-pagination';
+
 import { PipesModule } from './../shared/pipes/pipes.module';
 import { TDAnalyzerComponent } from './tdanalyzer.component';
 import { TDAnalyzerService } from './tdanalyzer.service';
@@ -14,7 +16,8 @@ import { TDFilterModule } from './../shared/components/td-filter/td-filter.modul
     FormsModule,
     TdModalModule,
     PipesModule,
-    TDFilterModule
+    TDFilterModule,
+    NgxPaginationModule
   ],
   declarations: [
     TDAnalyzerComponent

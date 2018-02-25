@@ -20,7 +20,7 @@
     <div class="box-body">
 
       <ul class="list-group">
-        <li class="list-group-item" *ngFor="let bug of bugs" style="border-color:black !important;">
+        <li class="list-group-item findbugs-element" *ngFor="let bug of bugs | paginate: { itemsPerPage: 6, currentPage: page }">
           <div class="findbugs-container">
             <div>
               <b>Class:</b> {{bug.class}}</div>
@@ -52,6 +52,10 @@
           </p>
         </li>
       </ul>
+
+      <div style="text-align: center;">
+        <pagination-controls (pageChange)="page = $event"></pagination-controls>
+      </div>
 
     </div>
   </div>

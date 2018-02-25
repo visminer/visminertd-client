@@ -13,6 +13,7 @@ export class TDFindbugsComponent implements OnInit {
 
   @Input() tdItem: TDItem;
   bugs: Bug[] = [];
+  page = 1;
 
   constructor(private service: TDFindbugsService) { }
 

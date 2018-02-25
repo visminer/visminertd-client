@@ -13,6 +13,7 @@ export class TDCheckstyleComponent implements OnInit {
 
   @Input() tdItem: TDItem;
   styleProblems: StyleProblem[] = [];
+  page = 1;
 
   constructor(private service: TDCheckstyleService) { }
 

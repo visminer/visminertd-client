@@ -19,7 +19,7 @@
         <h4>Total Duplication: {{totalDuplication}}%</h4>
         <h4>Duplication Occurrences</h4>
 
-        <div class="box box-primary" *ngFor="let duplication of duplications">
+        <div class="box box-primary" *ngFor="let duplication of duplications | paginate: { itemsPerPage: 5, currentPage: page }">
             <div class="box-header with-border even-spaced-text-container">
                 <span class="box-title">Tokens Threshold: {{duplication.tokens_threshold}}</span>
                 <span class="box-title">Token Count: {{duplication.token_count}}</span>
@@ -42,5 +42,9 @@
                 </ul>
             </div>
         </div>
+
+        <div style="text-align: center;">
+            <pagination-controls (pageChange)="page = $event"></pagination-controls>
+          </div>
     </div>
 </ng-template>

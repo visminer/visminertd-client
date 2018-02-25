@@ -92,7 +92,7 @@ export class TDEvolutionComponent implements OnInit {
     this.sliderRange = [values[0], values[1]];
     this.loadChart();
     this.setFilesTotalByReference();
- }
+  }
 
  loadChart() {
   let seriesArray = this.loadSeries();
