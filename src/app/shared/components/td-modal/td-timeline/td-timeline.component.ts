@@ -26,7 +26,6 @@ export class TDTimelineComponent implements OnInit {
         let prevSum = 0;
         for (let item of res.slice().reverse()) {
           let sum = item.indicators.reduce((a, b) => a + b.occurrences, 0);
-          console.log(sum);
           if (sum > prevSum) {
             this.tdSymbols[item._id] = 'red';
           } else if (sum < prevSum) {

@@ -49,15 +49,16 @@ export class TDEvolutionComponent implements OnInit {
       debtsTotal: [],
     }
     this.loadSlider();
-
+    
+    const commits = this.references.map(elem => elem.commits[0]).join();
     if (this.repository) {
-      this.tdEvolutionServ.getTDReport(this.repository._id).subscribe(
+      this.tdEvolutionServ.getTDReport(this.repository._id, commits).subscribe(
         data => {
           this.tdReport = data;
           this.loadChart();    
         }
       );
-      this.tdEvolutionServ.countFilesByReference(this.repository._id).subscribe(
+      this.tdEvolutionServ.countFilesByReference(this.repository._id, commits).subscribe(
         data => {
           this.filesReport = data;
           this.setFilesTotalByReference();
@@ -113,7 +114,8 @@ export class TDEvolutionComponent implements OnInit {
     },  
     chart: {
       type: 'column',
-      width: 1014 // TODO: Make it 100% of parent div instead of setting statically
+      width: 1100, // TODO: Make it 100% of parent div instead of setting statically
+      height: 800
     },
     legend: {
       align: 'center',
@@ -157,6 +159,11 @@ export class TDEvolutionComponent implements OnInit {
     let chartDefectDebtSeries = [];
     let chartTestDebtSeries = [];
     let chartRequirementDebtSeries = [];
+    let chartUnknownDebtSeries = [];
+    let chartArchitectureDebtSeries = [];
+    let chartBuildDebtSeries = [];
+    let chartDocumentationDebtSeries = [];
+    let chartPeopleDebtSeries = [];
     let seriesArray = [];
 
     for (let i = this.sliderRange[0]; i < this.sliderRange[1] + 1; i++) {
@@ -170,26 +177,40 @@ export class TDEvolutionComponent implements OnInit {
         chartDefectDebtSeries.push(this.getTotalOfDebtsByType(tdItens, "DEFECT_DEBT"));
         chartTestDebtSeries.push(this.getTotalOfDebtsByType(tdItens, "TEST_DEBT"));
         chartRequirementDebtSeries.push(this.getTotalOfDebtsByType(tdItens, "REQUIREMENT_DEBT"));
+        chartUnknownDebtSeries.push(this.getTotalOfDebtsByType(tdItens, "UNKNOWN_DEBT"));
+        chartArchitectureDebtSeries.push(this.getTotalOfDebtsByType(tdItens, "ARCHITECTURE_DEBT"));
+        chartBuildDebtSeries.push(this.getTotalOfDebtsByType(tdItens, "BUILD_DEBT"));
+        chartDocumentationDebtSeries.push(this.getTotalOfDebtsByType(tdItens, "DOCUMENTATION_DEBT"));
+        chartPeopleDebtSeries.push(this.getTotalOfDebtsByType(tdItens, "PEOPLE_DEBT"));
         
         this.tdBoxes.indicatorsTotal.push(this.getTotalOfIndicators(tdItens));
       }  
     }
     
     this.referenceNames.forEach((ref, index) => {
-      this.tdBoxes.debtsTotal.push(chartCodeDebtSeries[index] + chartDesignDebtSeries[index] + chartDefectDebtSeries[index] + chartTestDebtSeries[index] + chartRequirementDebtSeries[index]);
+      let total = chartCodeDebtSeries[index] + chartDesignDebtSeries[index] + chartDefectDebtSeries[index] +
+      chartTestDebtSeries[index] + chartRequirementDebtSeries[index] + chartUnknownDebtSeries[index] + chartArchitectureDebtSeries[index] +
+      chartBuildDebtSeries[index] + chartDocumentationDebtSeries[index] + chartPeopleDebtSeries[index];
+      if (total) this.tdBoxes.debtsTotal.push(total);
+      else this.tdBoxes.debtsTotal.push(0);
     });
     seriesArray.push({ color: '#dd3939', name: 'Defect Debt', data: chartDefectDebtSeries });
     seriesArray.push({ color: '#f39c12', name: 'Test Debt', data: chartTestDebtSeries });
     seriesArray.push({ color: '#8a6d3b', name: 'Requirement Debt', data: chartRequirementDebtSeries });
     seriesArray.push({ color: '#1B93A7', name: 'Code Debt', data: chartCodeDebtSeries });
     seriesArray.push({ color: '#91A28B', name: 'Design Debt', data: chartDesignDebtSeries });
+    seriesArray.push({ color: '#605ca8', name: 'Unknwon Debt', data: chartUnknownDebtSeries });
+    seriesArray.push({ color: '#58f3fc', name: 'Architecture Debt', data: chartArchitectureDebtSeries });
+    seriesArray.push({ color: '#001F3F', name: 'Build Debt', data: chartBuildDebtSeries });
+    seriesArray.push({ color: '#008d4c', name: 'Documentation Debt', data: chartDocumentationDebtSeries });
+    seriesArray.push({ color: '#adfc58', name: 'People Debt', data: chartPeopleDebtSeries });
 
     return seriesArray;
   }
 
 getReport(referenceName: string) {
     for (let index in this.tdReport) {
-      if (this.tdReport[index].reference === referenceName) return this.tdReport[index]
+      if (this.tdReport[index].reference.toLowerCase().includes(referenceName.toLowerCase())) return this.tdReport[index]
     }
 
     return null;
@@ -202,7 +223,7 @@ getReport(referenceName: string) {
       let debts = tdItens[i].debts;
 			for (let index in debts) {
 				let debtObject = debts[index];
-				if (debtObject.name == debtName && (debtObject.value == 0 || debtObject.value == 1 || debtObject.value == 2)) {
+				if (debtObject.name == debtName && (debtObject.value > -1 && debtObject.value < 3)) {
 					total++;
 					break;
 				}
@@ -222,15 +243,15 @@ getReport(referenceName: string) {
 
   setFilesTotalByReference() {
     this.tdBoxes.classesTotal = [];
-    for (let i = this.sliderRange[0]; i < this.sliderRange[1] + 1; i++) {
-      let referenceName = this.references[i].name;
+    for (let pos of this.sliderRange) {
+      let referenceName = this.references[pos].name;
       this.filesReport.forEach((fileReport) => {
         // _id is actually the reference name
-        if (fileReport._id.includes(referenceName)) {
+        if (fileReport._id.toLowerCase().endsWith(referenceName.toLowerCase())) {
           this.tdBoxes.classesTotal.push(fileReport.totalFiles);
         }
       });
-    }  
+    }
   }
 
 }

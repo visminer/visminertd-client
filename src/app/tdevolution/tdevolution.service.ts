@@ -13,15 +13,15 @@ export class TDEvolutionService {
 
   constructor(private http: HttpClient) { }
 
-  getTDReport(repository: string): Observable<TDReport[]> {
-    return this.http.get<TDReport[]>(`http://localhost:3000/api/technicaldebt_report/repository/${repository}`)
+  getTDReport(repository: string, commits: string): Observable<TDReport[]> {
+    return this.http.get<TDReport[]>(`http://localhost:3000/api/technicaldebt_report/repository/${repository}/commits/${commits}`)
     .pipe(
       catchError(err => [])
     );
   }
 
-  countFilesByReference(repository: string): Observable<FilesReport[]> {
-    return this.http.get<FilesReport[]>(`http://localhost:3000/api/code_analysis_report/count-files/repository/${repository}`)
+  countFilesByReference(repository: string, commits: string): Observable<FilesReport[]> {
+    return this.http.get<FilesReport[]>(`http://localhost:3000/api/code_analysis_report/count-files/repository/${repository}/commits/${commits}`)
     .pipe(
       catchError(err => [])
     );
