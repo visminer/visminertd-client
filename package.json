@@ -51,6 +51,7 @@
     "morris.js": "^0.5.0",
     "ng2-nouislider": "^1.7.7",
     "ngx-bootstrap": "^2.0.2",
+    "ngx-pagination": "^3.1.0",
     "nouislider": "^10.1.0",
     "npm": "^5.3.0",
     "raphael": "^2.2.7",
