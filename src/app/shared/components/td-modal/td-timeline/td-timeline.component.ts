@@ -13,12 +13,31 @@ import { TDItem } from './../../../models/TDItem';
 export class TDTimelineComponent implements OnInit {
 
   @Input() tdItem: TDItem;
-  tdHistory$: Observable<TDItem[]>;
+  tdHistory: TDItem[];
+  tdSymbols = {};
 
   constructor(private timelineServ: TDTimelineService, public visminerServ: VisminerService) { }
 
   ngOnInit() {
-    this.tdHistory$ = this.timelineServ.getFileDebtHistory(this.tdItem);
+    this.timelineServ.getFileDebtHistory(this.tdItem).subscribe(
+      res => {
+        this.tdHistory = res;
+        
+        let prevSum = 0;
+        for (let item of res.slice().reverse()) {
+          let sum = item.indicators.reduce((a, b) => a + b.occurrences, 0);
+          console.log(sum);
+          if (sum > prevSum) {
+            this.tdSymbols[item._id] = 'red';
+          } else if (sum < prevSum) {
+            this.tdSymbols[item._id] = 'green';
+          } else {
+            this.tdSymbols[item._id] = 'gray';
+          }
+          prevSum = sum;
+        }
+      }
+    );
   }
 
 }

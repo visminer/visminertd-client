@@ -1,35 +1,35 @@
 <div class="row" style="padding-top: 20px;">
   <div class="col-md-12">
     <ul class="timeline">
-      <li class="time-label" *ngFor="let item of tdHistory$ | async">
+      <li class="time-label" *ngFor="let item of tdHistory">
         <span class="bg-blue version-timeline">
             {{item.reference}}
         </span>
         <ul class="ul-timeline">
           <li>
 
-            <div [ngSwitch]="item.intentional">
-              <i class="fa fa-usd bg-green icon-timeline" *ngSwitchCase="'no'"></i>
-              <i class="fa fa-usd bg-red icon-timeline" *ngSwitchCase="'yes'"></i>
+            <div [ngSwitch]="tdSymbols[item._id]">
+              <i class="fa fa-usd bg-green icon-timeline" *ngSwitchCase="'green'"></i>
+              <i class="fa fa-usd bg-red icon-timeline" *ngSwitchCase="'red'"></i>
               <i class="fa bg-gray icon-timeline" style="color: white" *ngSwitchDefault>-</i>
             </div>
 
-            <div class="timeline-item" style="display: inline;">
-
-              <span *ngFor="let debt of item.debts" class="label span-analyze-debt" style="margin-right: 5px;"
-              [ngClass]="{
-                'bg-code-debt': debt.name === 'CODE_DEBT',
-                'bg-design-debt': debt.name === 'DESIGN_DEBT',
-                'bg-defect-debt': false,
-                'bg-test-debt': false,
-                'bg-requirement-debt': false
+            <div class="timeline-item" style="margin-left: 60px;">
+              <span *ngFor="let debt of item.debts" class="label span-analyze-debt"
+              style="margin-right: 5px; float: left; margin-bottom: 5px;"
+              [ngClass] = "{
+                'bg-gray': debt.value == 0,
+                'bg-red': debt.value == 1,
+                'bg-yellow': debt.value == 2,
+                'bg-green': debt.value == 3 || debt.value == -1
               }">
                   {{debt.name | removeChar}}                     
               </span>
             </div>
             
-            <div style="margin-left: 70px;">
-              <span class="label bg-olive span-analyze-indicator" style="margin-right: 5px;" *ngFor="let indicator of item.indicators">
+            <div style="margin-left: 70px; clear: both; margin-top: 15px;">
+              <span class="label bg-olive span-analyze-indicator" style="margin-right: 5px; float: left; margin-bottom: 5px;"
+              *ngFor="let indicator of item.indicators">
                   {{indicator.name | removeChar}}&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;{{indicator.occurrences}} 
               </span>
             </div>
