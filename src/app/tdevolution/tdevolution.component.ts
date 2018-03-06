@@ -103,7 +103,7 @@ export class TDEvolutionComponent implements OnInit {
     yAxis: {
       min: 0,
       allowDecimals: false,
-      title: { text: 'Total of classes having Technical Debt' },
+      title: { text: 'Total of files having Technical Debt' },
       stackLabels: {
         enabled: true,
         style: {
@@ -199,10 +199,10 @@ export class TDEvolutionComponent implements OnInit {
     seriesArray.push({ color: '#8a6d3b', name: 'Requirement Debt', data: chartRequirementDebtSeries });
     seriesArray.push({ color: '#1B93A7', name: 'Code Debt', data: chartCodeDebtSeries });
     seriesArray.push({ color: '#91A28B', name: 'Design Debt', data: chartDesignDebtSeries });
-    seriesArray.push({ color: '#605ca8', name: 'Unknwon Debt', data: chartUnknownDebtSeries });
+    seriesArray.push({ color: '#008d4c', name: 'Unknwon Debt', data: chartUnknownDebtSeries });
     seriesArray.push({ color: '#58f3fc', name: 'Architecture Debt', data: chartArchitectureDebtSeries });
     seriesArray.push({ color: '#001F3F', name: 'Build Debt', data: chartBuildDebtSeries });
-    seriesArray.push({ color: '#008d4c', name: 'Documentation Debt', data: chartDocumentationDebtSeries });
+    seriesArray.push({ color: '#605ca8', name: 'Documentation Debt', data: chartDocumentationDebtSeries });
     seriesArray.push({ color: '#adfc58', name: 'People Debt', data: chartPeopleDebtSeries });
 
     return seriesArray;
@@ -244,10 +244,10 @@ getReport(referenceName: string) {
   setFilesTotalByReference() {
     this.tdBoxes.classesTotal = [];
     for (let pos of this.sliderRange) {
-      let referenceName = this.references[pos].name;
+      let referenceName = this.references[pos].name.toLowerCase();
       this.filesReport.forEach((fileReport) => {
         // _id is actually the reference name
-        if (fileReport._id.toLowerCase().endsWith(referenceName.toLowerCase())) {
+        if (fileReport._id.toLowerCase().endsWith(referenceName)) {
           this.tdBoxes.classesTotal.push(fileReport.totalFiles);
         }
       });
