@@ -9,7 +9,7 @@ import { FilesReport } from '../shared/models/CodeAnalysisReport';
 import { VisminerService } from '../shared/services/visminer.service';
 import { TDEvolutionService } from './tdevolution.service';
 
-import { NouisliderComponent } from 'ng2-nouislider/src/nouislider';
+import { NouisliderComponent } from 'ng2-nouislider/src/ng2-nouislider';
 import { ChartComponent } from 'angular2-highcharts';
 
 @Component({

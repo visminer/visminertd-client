@@ -24,6 +24,7 @@ import { TDPmdCpdComponent } from './td-pmd-cpd/td-pmd-cpd.component';
 import { TDPmdCpdService } from './td-pmd-cpd/td-pmd-cpd.service';
 import { TDExcommentComponent } from './td-excomment/td-excomment.component';
 import { TDExcommentService } from './td-excomment/td-excomment.service';
+import { ModalModule } from 'ngx-bootstrap/modal';
 
 declare var require: any;
 export function highchartsFactory() {
@@ -36,7 +37,8 @@ export function highchartsFactory() {
     FormsModule,
     PipesModule,
     ChartModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    ModalModule
   ],
   declarations: [
     TDFormComponent,

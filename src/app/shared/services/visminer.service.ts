@@ -6,13 +6,7 @@ import { Reference } from './../models/Reference';
 @Injectable()
 export class VisminerService {
   
-  constructor() { 
-    this.repository = JSON.parse(localStorage.getItem('repository'));
-    let cachedReferences = JSON.parse(localStorage.getItem('references'));
-    if (cachedReferences) {
-      this.references = cachedReferences;
-    }  
-  }
+  constructor() { }
 
   repository: Repository = null;
   references: Reference[] = [];
@@ -23,9 +17,8 @@ export class VisminerService {
       this.references.splice(index, 1);
     } else {
       this.references.push(reference);
-      this.references.sort((ref1,ref2) => ref1.commitsLength - ref2.commitsLength);
+      this.references.sort((ref1, ref2) => ref1.commitsLength - ref2.commitsLength);
     }
-    localStorage.setItem('references', JSON.stringify(this.references));
   }
 
   getReferenceIndex(reference: Reference): number {
@@ -42,6 +35,6 @@ export class VisminerService {
 
   setRepository(repo: Repository): void {
     this.repository = repo;
-    localStorage.setItem('repository', JSON.stringify(repo));
   }
+  
 }

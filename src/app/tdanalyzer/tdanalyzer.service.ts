@@ -32,9 +32,9 @@ export class TDAnalyzerService {
 
   confirmAllDebt(commit: string, filter?: any): Observable<any> {
     return this.http.put<any>(`http://localhost:3000/api/technicaldebt/confirmall`,
-    { commit: commit, filter: filter },
-    DEFAULT_HEADER)
-    .pipe(catchError(err => null));
+      { commit: commit, filter: filter },
+      DEFAULT_HEADER)
+      .pipe(catchError(err => null));
   }
 
   private changeDebtStatus(_id: string, debt: string, option: string): Observable<any> {

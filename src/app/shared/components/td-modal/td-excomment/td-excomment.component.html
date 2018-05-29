@@ -1,5 +1,4 @@
 <div *ngIf="!comments.length; then thenBlock else elseBlock"></div>
-
 <ng-template #thenBlock>
     <div class="row" style="padding: 10px;">
         <div class="box box-solid box-success">
@@ -21,18 +20,18 @@
                 <tr>
                     <!--<td>ID</td>-->
                     <td class="col-md-5"><b>Comment</b></td>
-                    <td class="col-md-2"><b>Class / Method</b></td>
+                    <td class="col-md-2"><b>Class/Method</b></td>
                     <td class="col-md-5"><b>Patterns</b></td>
                 </tr>
             </thead>
 
             <tbody>
-                <tr *ngFor="let comment of comments | paginate: { itemsPerPage: 5, currentPage: page }">
+                <tr *ngFor="let comment of comments | paginate: { itemsPerPage: 3, currentPage: page }">
                     <!--<td>{{comment.id}}</td>-->
                     <td>{{comment.comment}}</td>
                     <td>
                         {{comment.class}}
-                        <br> / <br>
+                        <br><b>/</b><br>
                         {{comment.method}}
                     </td>
                     <td>
@@ -65,6 +64,6 @@
 
         <div style="text-align: center;">
             <pagination-controls (pageChange)="page = $event"></pagination-controls>
-          </div>
+        </div>
     </div>
 </ng-template>

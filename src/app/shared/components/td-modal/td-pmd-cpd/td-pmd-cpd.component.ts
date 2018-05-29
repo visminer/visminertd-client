@@ -22,6 +22,7 @@ export class TDPmdCpdComponent implements OnInit {
   ngOnInit() {
     this.service.getDuplications(this.tdItem.commit, this.tdItem.filehash).subscribe(res => {
       this.duplications = res;
+      console.log(res);
 
       for (let duplication of this.duplications) {
         for (let occurrence of duplication.occurrences) {

@@ -20,7 +20,7 @@
     <div class="box-body">
 
       <ul class="list-group">
-        <li class="list-group-item findbugs-element" *ngFor="let bug of bugs | paginate: { itemsPerPage: 6, currentPage: page }">
+        <li class="list-group-item findbugs-element" *ngFor="let bug of bugs | paginate: { itemsPerPage: 5, currentPage: page }">
           <div class="findbugs-container">
             <div>
               <b>Class:</b> {{bug.class}}</div>

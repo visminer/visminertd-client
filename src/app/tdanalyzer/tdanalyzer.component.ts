@@ -20,14 +20,13 @@ export class TDAnalyzerComponent implements OnInit {
 
   itemDetailsModal: BsModalRef;
   filter: any;
-  page = 1;
-  totalItems = 0;
+  page: number;
 
   references: Reference[];
   repository: Repository;
-  selectedReference: Reference = null;
+  selectedReference: Reference;
 
-  files: TDItem[];
+  files: TDItem[] = [];
 
   constructor(private tdanalyzerServ: TDAnalyzerService, private visminerServ: VisminerService,
   private modalService: BsModalService) { }
@@ -35,6 +34,9 @@ export class TDAnalyzerComponent implements OnInit {
   ngOnInit() {
     this.repository = this.visminerServ.repository;
     this.references = this.visminerServ.references;
+    this.page = 1;
+    this.files = [];
+    this.selectedReference = null;
   }
 
   showDetails(file: TDItem) {
@@ -48,8 +50,8 @@ export class TDAnalyzerComponent implements OnInit {
 
     if (this.selectedReference) {
       this.tdanalyzerServ.getTDItems(this.selectedReference.commits[0], filter).subscribe(
-        r => { this.files = r; this.totalItems = r.length; }
-      )
+        r => { this.files = r; }
+      );
     } else {
       alert('You need to select one reference on the menu.');
     }

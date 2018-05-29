@@ -1,3 +1,21 @@
+.grid-container {
+    text-align: center;
+    float: left;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    padding-top: 40px;
+    width: 100%;
+}
+
+.grid-item {
+    padding: 10px;
+}
+
+.pager-controls {
+    width: 100%;
+    text-align: center;
+}
+
 .type-box {
     margin-right: 5px;
     margin-top: 5px;
