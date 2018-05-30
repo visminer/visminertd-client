@@ -46,7 +46,7 @@ export class TDEvolutionComponent implements OnInit {
     this.tdBoxes = {
       classesTotal: [],
       indicatorsTotal: [],
-      debtsTotal: [],
+      debtsTotal: []
     }
     this.loadSlider();
     

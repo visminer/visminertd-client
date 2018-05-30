@@ -11,5 +11,7 @@ export class TDEvolutionBoxesComponent {
   @Input() references: Reference[];
   @Input() tdBoxes: any;
 
-  constructor() { }
+  constructor() { 
+  }
+
 }
