@@ -199,7 +199,7 @@ export class TDEvolutionComponent implements OnInit {
     seriesArray.push({ color: '#8a6d3b', name: 'Requirement Debt', data: chartRequirementDebtSeries });
     seriesArray.push({ color: '#1B93A7', name: 'Code Debt', data: chartCodeDebtSeries });
     seriesArray.push({ color: '#91A28B', name: 'Design Debt', data: chartDesignDebtSeries });
-    seriesArray.push({ color: '#008d4c', name: 'Unknwon Debt', data: chartUnknownDebtSeries });
+    seriesArray.push({ color: '#008d4c', name: 'Unknown Debt', data: chartUnknownDebtSeries });
     seriesArray.push({ color: '#58f3fc', name: 'Architecture Debt', data: chartArchitectureDebtSeries });
     seriesArray.push({ color: '#001F3F', name: 'Build Debt', data: chartBuildDebtSeries });
     seriesArray.push({ color: '#605ca8', name: 'Documentation Debt', data: chartDocumentationDebtSeries });

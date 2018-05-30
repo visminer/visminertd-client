@@ -5,22 +5,42 @@
     cursor: pointer;
 }
 
-.bg-code-debt {
-    background-color: #1B93A7!important;
-}
-
-.bg-design-debt {
-    background-color: #91A28B!important;
-}
-
 .bg-defect-debt {
-    background-color: #dd3939!important;
+    background-color: #dd3939 !important;
 }
 
 .bg-test-debt {
-    background-color: #f39c12!important;
+    background-color: #f39c12 !important;
 }
 
 .bg-requirement-debt {
-    background-color: #8a6d3b!important;
+    background-color: #8a6d3b !important;
+}
+
+.bg-code-debt {
+    background-color: #1B93A7 !important;
+}
+
+.bg-design-debt {
+    background-color: #91A28B !important;
+}
+
+.bg-unknown-debt {
+    background-color: #008d4c !important;
+}
+
+.bg-architecture-debt {
+    background-color: #58f3fc !important;
+}
+
+.bg-build-debt {
+    background-color: #001F3F !important;
+}
+
+.bg-documentation-debt {
+    background-color: #605ca8 !important;
+}
+
+.bg-people-debt {
+    background-color: #adfc58 !important;
 }
