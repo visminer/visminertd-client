@@ -21,7 +21,7 @@
       <label class="col-sm-12 col-form-label">Select a class</label>
       <div class="col-sm-12">
         <select class="form-control" name="classes_smells" [(ngModel)]="selectedClass" (change)="updateSelectedMethod()">
-          <option *ngFor="let clz of classes" [ngValue]="clz">{{clz.name | extractClassname}}</option>
+          <option *ngFor="let clz of classes" [ngValue]="clz">{{clz.name}}</option>
         </select>
       </div>
     </div>
